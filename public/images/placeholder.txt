@@ -1,0 +1,14 @@
+Note: In a production environment, you should replace the placeholder references with actual images.
+
+For this demonstration, the site is using CSS backgrounds with placeholders.
+
+In production:
+1. Replace all image references in the code with actual image files
+2. Consider using Next.js Image component for optimized image loading
+3. Add proper alt text for accessibility
+
+Suggested image sizes:
+- Hero background: 1920x1080px
+- About image: 600x450px
+- Product images: 600x400px
+- Technology image: 500x700px 
