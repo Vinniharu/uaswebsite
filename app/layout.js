@@ -1,8 +1,12 @@
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-
+import DroneNavbar from "./components/drones/DroneNavbar";
+import DroneFooter from "./components/drones/DroneFooter";
+import { usePathname } from "next/navigation";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -13,23 +17,32 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  title: "Briech UAS - Africa's Premier Unmanned Aerial Systems Manufacturer",
-  description: "Delivering cutting-edge drone technology for commercial, security, and defense operations",
-  icons: {
-    icon: "/icon.webp",
-  },
-};
-
 export default function RootLayout({ children }) {
+  const pathname = usePathname();
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/icon.webp" />
+        <title>
+          Briech UAS - Africa's Premier Unmanned Aerial Systems Manufacturer
+        </title>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        {pathname.includes("/drones") ? (
+          <>
+            <DroneNavbar />
+            {children}
+            <DroneFooter />
+          </>
+        ) : (
+          <>
+            <Navbar />
+            {children}
+            <Footer />
+          </>
+        )}
       </body>
     </html>
   );

@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { useRef, useState, useEffect } from "react";
 
-export default function Drone() {
+export default function Drone({path}) {
     const droneRef = useRef();
     const propellerRefs = [useRef(), useRef(), useRef(), useRef()];
     const [model, setModel] = useState(null);
@@ -15,12 +15,12 @@ export default function Drone() {
         // Dynamic import of OBJLoader from three.js
         import('three/examples/jsm/loaders/OBJLoader').then((OBJLoader) => {
             const loader = new OBJLoader.OBJLoader();
-            loader.load('/drone3d.obj', (obj) => {
+            loader.load(path, (obj) => {
                 // Apply material to all meshes in the object
                 obj.traverse((child) => {
                     if (child instanceof THREE.Mesh) {
                         child.material = new THREE.MeshStandardMaterial({
-                            color: 0xD4AF37, // Gold color
+                            color: "#D4AF37", // Gold color
                             metalness: 0.7,
                             roughness: 0.3
                         });
@@ -54,13 +54,11 @@ export default function Drone() {
             {/* Fallback to basic shapes if model is not loaded yet */}
             {!model && (
                 <>
-                    {/* Drone body */}
                     <mesh>
                         <sphereGeometry args={[1, 32, 32]} />
                         <meshStandardMaterial color="#D4AF37" />
                     </mesh>
                     
-                    {/* Propellers */}
                     {[
                         [1.5, 1, 0],
                         [-1.5, 1, 0],
@@ -69,7 +67,7 @@ export default function Drone() {
                     ].map((pos, index) => (
                         <mesh key={index} ref={propellerRefs[index]} position={pos}>
                             <boxGeometry args={[0.2, 3, 0.1]} />
-                            <meshStandardMaterial color="#D4AF37" /> {/* Changed from blue to gold */}
+                            <meshStandardMaterial color="#D4AF37" /> 
                         </mesh>
                     ))}
                 </>

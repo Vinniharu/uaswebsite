@@ -183,7 +183,7 @@ const HeroSection = () => {
         </div>
         
         {/* 3D Drone Model instead of static image */}
-        <div className="hidden w-1/2 h-[400px] md:flex items-center justify-center">
+        <div className="hidden w-1/2 h-[400px] lg:flex items-center justify-center">
           <motion.div 
             className="w-full h-full"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -199,7 +199,7 @@ const HeroSection = () => {
               <ambientLight intensity={0.8} />
               <directionalLight position={[10, 10, 5]} intensity={1} />
               <pointLight position={[-10, -10, -10]} intensity={0.5} />
-              <Drone />
+              <Drone path="/drone3d.obj" />
               <OrbitControls 
                 enableDamping 
                 dampingFactor={0.05} 

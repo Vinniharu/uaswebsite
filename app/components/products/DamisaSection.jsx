@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const DamisaSection = () => {
   return (
@@ -9,7 +10,7 @@ const DamisaSection = () => {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
       
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-16">
         <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -35,50 +36,59 @@ const DamisaSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, amount: 0.3 }}
           >
-            <div className="relative h-[450px] w-full">
-              {/* Pattern background instead of image */}
-              <div className="absolute inset-0 bg-white rounded-lg overflow-hidden shadow-soft">
-                <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
-                  {/* Background image */}
-                  <img 
-                    src="/damisa.webp" 
-                    alt="Damisa Combat Drone" 
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                    }}
-                  />
-                  
-                  {/* Gold overlay patterns */}
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
-                    backgroundSize: '20px 20px',
-                    opacity: 0.3
-                  }}></div>
-                  
-                  {/* Gold diagonal lines */}
-                  <div className="absolute inset-0" style={{
-                    backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
-                    backgroundSize: '30px 30px',
-                    opacity: 0.2
-                  }}></div>
+            <Link href="/drones/damisa">
+              <div className="relative h-[450px] w-full group cursor-pointer">
+                {/* Pattern background instead of image */}
+                <div className="absolute inset-0 bg-white rounded-lg overflow-hidden shadow-soft">
+                  <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
+                    {/* Background image */}
+                    <img 
+                      src="/damisa.webp" 
+                      alt="Damisa Combat Drone" 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                      }}
+                    />
+                    
+                    {/* Gold overlay patterns */}
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
+                      backgroundSize: '20px 20px',
+                      opacity: 0.3
+                    }}></div>
+                    
+                    {/* Gold diagonal lines */}
+                    <div className="absolute inset-0" style={{
+                      backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
+                      backgroundSize: '30px 30px',
+                      opacity: 0.2
+                    }}></div>
+
+                    {/* View specs overlay */}
+                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="px-4 py-2 bg-gold text-black font-medium rounded">
+                        View Specifications
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold opacity-30 rounded-lg"></div>
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-blue-accent opacity-30 rounded-lg"></div>
+                
+                {/* Gold accent */}
+                <motion.div 
+                  className="absolute top-1/2 -right-3 h-[2px] bg-gold"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '25%' }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  viewport={{ once: true }}
+                ></motion.div>
               </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold opacity-30 rounded-lg"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-blue-accent opacity-30 rounded-lg"></div>
-              
-              {/* Gold accent */}
-              <motion.div 
-                className="absolute top-1/2 -right-3 h-[2px] bg-gold"
-                initial={{ width: 0 }}
-                whileInView={{ width: '25%' }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
-              ></motion.div>
-            </div>
+            </Link>
           </motion.div>
           
           {/* Right side - Text content */}
@@ -174,12 +184,12 @@ const DamisaSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <a href="/contact" className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group">
-                <span>Request specifications</span>
+              <Link href="/drones/damisa" className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group">
+                <span>View Specifications</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                 </svg>
-              </a>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

@@ -10,7 +10,7 @@ const OurStory = () => {
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 pt-16">
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
