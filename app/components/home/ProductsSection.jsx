@@ -142,7 +142,7 @@ const ProductsSection = () => {
           variants={sectionVariants}
         >
           {products.map((product, index) => (
-            <Link href={`/products/${product.id}`} key={product.id}>
+            <Link href={`/drones/${product.id}`} key={product.id}>
               <motion.div
                 className="relative group"
                 variants={cardVariants}
