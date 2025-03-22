@@ -90,7 +90,7 @@ export default function DroneSpecifications({ params }) {
             </div>
             <div className="p-4">
               {/* <DroneModel modelPath={modelPath} /> */}
-              <DroneWrapper path={modelPath} />
+              <DroneWrapper path={modelPath} color={colorAccent} />
             </div>
           </div>
           

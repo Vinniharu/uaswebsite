@@ -40,7 +40,7 @@ function Loader() {
     );
 }
 
-export default function Drone({path}) {
+export default function Drone({path, color}) {
     const droneRef = useRef();
     const propellerRefs = [useRef(), useRef(), useRef(), useRef()];
     const [model, setModel] = useState(null);
@@ -60,7 +60,7 @@ export default function Drone({path}) {
                     obj.traverse((child) => {
                         if (child instanceof THREE.Mesh) {
                             child.material = new THREE.MeshStandardMaterial({
-                                color: "#D4AF37", // Gold color
+                                color: color || "#D4AF37", // Gold color
                                 metalness: 0.7,
                                 roughness: 0.3
                             });
