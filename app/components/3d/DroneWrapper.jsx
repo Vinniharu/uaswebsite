@@ -3,17 +3,28 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
 import Drone from "./Drone";
+import DroneFBX from "./DroneFBX";
 
 export default function DroneWrapper({ path, color }) {
   return (
     <div className="w-full h-[400px] md:h-[500px] relative">
       <Canvas shadows camera={{ position: [0, 0, 10], fov: 50 }}>
         <ambientLight intensity={0.5} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} castShadow />
+        <spotLight
+          position={[10, 10, 10]}
+          angle={0.15}
+          penumbra={1}
+          intensity={1}
+          castShadow
+        />
         <pointLight position={[-10, -10, -10]} intensity={0.5} />
-        
-        <Drone path={path} color={color} />
-        
+
+        {path ? (
+          <DroneFBX path={path} color={color} />
+        ) : (
+          <Drone path={"/drone3d.obj"} color={color} />
+        )}
+
         <ContactShadows
           rotation={[Math.PI / 2, 0, 0]}
           position={[0, -1.5, 0]}
@@ -23,9 +34,9 @@ export default function DroneWrapper({ path, color }) {
           blur={2.5}
           far={1.5}
         />
-        
+
         <Environment preset="city" />
-        <OrbitControls 
+        <OrbitControls
           enablePan={true}
           enableZoom={true}
           enableRotate={true}
@@ -39,4 +50,4 @@ export default function DroneWrapper({ path, color }) {
       </div>
     </div>
   );
-} 
+}

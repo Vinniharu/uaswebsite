@@ -3,10 +3,6 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaLinkedin,
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
@@ -63,32 +59,6 @@ const Footer = () => {
               cutting-edge drone technology for commercial, security, and
               defense operations.
             </p>
-            {/* <div className="flex space-x-4">
-              <a
-                href="#"
-                className="text-black/80 hover:text-gold transition-colors duration-300"
-              >
-                <FaFacebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-black/80 hover:text-gold transition-colors duration-300"
-              >
-                <FaTwitter size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-black/80 hover:text-gold transition-colors duration-300"
-              >
-                <FaInstagram size={20} />
-              </a>
-              <a
-                href="#"
-                className="text-black/80 hover:text-gold transition-colors duration-300"
-              >
-                <FaLinkedin size={20} />
-              </a>
-            </div> */}
           </motion.div>
 
           {/* Quick Links */}
@@ -136,7 +106,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/products"
+                  href="/drones/damisa"
                   className="text-black/70 hover:text-gold transition-colors duration-300"
                 >
                   Damisa Combat Drone
@@ -144,7 +114,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/products"
+                  href="/drones/argini"
                   className="text-black/70 hover:text-gold transition-colors duration-300"
                 >
                   Argini Reconnaissance Drone
@@ -152,7 +122,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/products"
+                  href="/drones/arsenio"
                   className="text-black/70 hover:text-gold transition-colors duration-300"
                 >
                   Arsenio Reconnaissance Drone
@@ -160,7 +130,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/products"
+                  href="/drones/xander"
                   className="text-black/70 hover:text-gold transition-colors duration-300"
                 >
                   Xander Reconnaissance Drone
@@ -168,7 +138,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/products"
+                  href="/drones/bfly"
                   className="text-black/70 hover:text-gold transition-colors duration-300"
                 >
                   Bfly Reconnaissance Drone

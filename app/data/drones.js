@@ -26,7 +26,7 @@ export const drones = [
       launchMethod: 'Runway or catapult',
       recoveryMethod: 'Runway or arrested landing',
     },
-    modelPath: '/drone3d.obj',
+    modelPath: "",
     imageUrl: '/damisa.webp',
     colorAccent: '#db3a34' // Red-ish
   },
@@ -58,7 +58,7 @@ export const drones = [
       launchMethod: 'Vertical take-off',
       recoveryMethod: 'Vertical landing',
     },
-    modelPath: '/drone3d.obj',
+    modelPath: '',
     imageUrl: '/argini.webp',
     colorAccent: '#3d5a80' // Blue-ish
   },
@@ -89,7 +89,7 @@ export const drones = [
       launchMethod: 'Vertical or short runway',
       recoveryMethod: 'Vertical or short runway landing',
     },
-    modelPath: '/drone3d.obj',
+    modelPath: '/models/arsenio.fbx',
     imageUrl: '/arsenio.webp',
     colorAccent: '#415a77' // Darker blue
   },
@@ -122,7 +122,7 @@ export const drones = [
       launchMethod: 'Vertical take-off',
       recoveryMethod: 'Vertical landing with emergency parachute',
     },
-    modelPath: '/drone3d.obj',
+    modelPath: '',
     imageUrl: '/xander.webp',
     colorAccent: '#38b000' // Green
   },
@@ -154,7 +154,7 @@ export const drones = [
       launchMethod: 'Hand launch or catapult',
       recoveryMethod: 'Skid landing or catch net',
     },
-    modelPath: '/drone3d.obj',
+    modelPath: '',
     imageUrl: '/bfly.webp',
     colorAccent: '#ffb703' // Gold/yellow
   }

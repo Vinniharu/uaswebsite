@@ -1,7 +1,10 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import Link from "next/link";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import DroneFBX from "../3d/DroneFBX";
 
 const ArsenioSection = () => {
   return (
@@ -9,11 +12,11 @@ const ArsenioSection = () => {
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
       <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
-      
+
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left side - Image with animations */}
-          <motion.div 
+          <motion.div
             className="lg:w-1/2 relative hidden lg:block"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -26,7 +29,7 @@ const ArsenioSection = () => {
                 <div className="absolute inset-0 bg-white rounded-lg overflow-hidden shadow-soft">
                   <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
                     {/* Background image */}
-                    <img 
+                    {/* <img 
                       src="/arsenio.webp" 
                       alt="Arsenio Reconnaissance Drone" 
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -34,21 +37,49 @@ const ArsenioSection = () => {
                         objectFit: 'cover',
                         objectPosition: 'center',
                       }}
-                    />
-                    
+                    /> */}
+
+                    <Canvas
+                      camera={{ position: [0, 0, 8], fov: 40 }}
+                      dpr={[1, 2]}
+                      gl={{ antialias: true, alpha: true }}
+                      style={{ background: "transparent" }}
+                    >
+                      <ambientLight intensity={0.8} />
+                      <directionalLight position={[10, 10, 5]} intensity={1} />
+                      <pointLight position={[-10, -10, -10]} intensity={0.5} />
+                      {/* <Drone path="/drone3d.obj" /> */}
+                      <DroneFBX path="/models/arsenio.fbx" />
+                      <OrbitControls
+                        enableDamping
+                        dampingFactor={0.05}
+                        rotateSpeed={0.3}
+                        enableZoom={false}
+                        enablePan={false}
+                        autoRotate
+                        autoRotateSpeed={0.5}
+                      />
+                    </Canvas>
+
                     {/* Gold overlay patterns */}
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
-                      backgroundSize: '20px 20px',
-                      opacity: 0.3
-                    }}></div>
-                    
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
+                        backgroundSize: "20px 20px",
+                        opacity: 0.3,
+                      }}
+                    ></div>
+
                     {/* Gold diagonal lines */}
-                    <div className="absolute inset-0" style={{
-                      backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
-                      backgroundSize: '30px 30px',
-                      opacity: 0.2
-                    }}></div>
+                    <div
+                      className="absolute inset-0"
+                      style={{
+                        backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
+                        backgroundSize: "30px 30px",
+                        opacity: 0.2,
+                      }}
+                    ></div>
 
                     {/* View specs overlay */}
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -58,25 +89,25 @@ const ArsenioSection = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Decorative elements */}
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold opacity-30 rounded-lg"></div>
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-blue-accent opacity-30 rounded-lg"></div>
-                
+
                 {/* Gold accent */}
-                <motion.div 
+                <motion.div
                   className="absolute top-1/2 -right-3 h-[2px] bg-gold"
                   initial={{ width: 0 }}
-                  whileInView={{ width: '25%' }}
+                  whileInView={{ width: "25%" }}
                   transition={{ duration: 1, delay: 0.5 }}
                   viewport={{ once: true }}
                 ></motion.div>
               </div>
             </Link>
           </motion.div>
-          
+
           {/* Right side - Text content */}
-          <motion.div 
+          <motion.div
             className="lg:w-1/2"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -91,25 +122,29 @@ const ArsenioSection = () => {
                 VTOL
               </div>
             </div>
-            
+
             <p className="text-blue-accent font-medium mb-6 italic">
-              Hybrid VTOL UAV for high-endurance ISR missions with 8-hour flight capability
+              Hybrid VTOL UAV for high-endurance ISR missions with 8-hour flight
+              capability
             </p>
-            
+
             <div className="w-20 h-1 bg-gold mb-6"></div>
-            
-            <motion.p 
+
+            <motion.p
               className="text-black/80 mb-6 leading-relaxed"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Inspired by ancient Greek mythology symbolizing strength and resilience, the Arsenio Reconnaissance Drone is built to be the ultimate aerial sentinel—swift, unrelenting, and all-seeing, ensuring forces detect threats first and strike with certainty.
+              Inspired by ancient Greek mythology symbolizing strength and
+              resilience, the Arsenio Reconnaissance Drone is built to be the
+              ultimate aerial sentinel—swift, unrelenting, and all-seeing,
+              ensuring forces detect threats first and strike with certainty.
             </motion.p>
-            
+
             {/* Features */}
-            <motion.div 
+            <motion.div
               className="space-y-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -120,47 +155,98 @@ const ArsenioSection = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-2">
                   <div className="mt-1 text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
-                  <span>High-Endurance Surveillance for 8-hour continuous flight</span>
+                  <span>
+                    High-Endurance Surveillance for 8-hour continuous flight
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="mt-1 text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
-                  <span>Advanced Sensor Suite with EO/IR cameras, LIDAR, and SAR</span>
+                  <span>
+                    Advanced Sensor Suite with EO/IR cameras, LIDAR, and SAR
+                  </span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="mt-1 text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
                   <span>Low Detectability & Stealth Operations</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="mt-1 text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
                   <span>Rapid Deployment & Multi-Terrain Adaptability</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <div className="mt-1 text-gold">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
                     </svg>
                   </div>
-                  <span>Modular Mission Customization for tactical surveillance</span>
+                  <span>
+                    Modular Mission Customization for tactical surveillance
+                  </span>
                 </li>
               </ul>
             </motion.div>
-            
+
             {/* CTA */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -168,10 +254,24 @@ const ArsenioSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
             >
-              <Link href="/drones/arsenio" className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group">
+              <Link
+                href="/drones/arsenio"
+                className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group"
+              >
                 <span>View Specifications</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
               </Link>
             </motion.div>
@@ -182,4 +282,4 @@ const ArsenioSection = () => {
   );
 };
 
-export default ArsenioSection; 
+export default ArsenioSection;
