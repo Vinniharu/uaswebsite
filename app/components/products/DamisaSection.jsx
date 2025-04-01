@@ -64,7 +64,7 @@ const DamisaSection = () => {
                       <ambientLight intensity={0.8} />
                       <directionalLight position={[10, 10, 5]} intensity={1} />
                       <pointLight position={[-10, -10, -10]} intensity={0.5} />
-                      <Drone path="/drone3d.obj" />
+                      <Drone path="/models/damisa.obj" />
                       {/* <DroneFBX path="/damisa.fbx" /> */}
                       <OrbitControls
                         enableDamping

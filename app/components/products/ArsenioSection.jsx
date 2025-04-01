@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import DroneFBX from "../3d/DroneFBX";
+import Drone from "../3d/Drone";
 
 const ArsenioSection = () => {
   return (
@@ -48,8 +48,8 @@ const ArsenioSection = () => {
                       <ambientLight intensity={0.8} />
                       <directionalLight position={[10, 10, 5]} intensity={1} />
                       <pointLight position={[-10, -10, -10]} intensity={0.5} />
-                      {/* <Drone path="/drone3d.obj" /> */}
-                      <DroneFBX path="/models/arsenio.fbx" />
+                      <Drone path="/models/arsenio.obj" />
+                      {/* <DroneFBX path="/models/arsenio.fbx" /> */}
                       <OrbitControls
                         enableDamping
                         dampingFactor={0.05}

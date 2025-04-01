@@ -19,11 +19,13 @@ export default function DroneWrapper({ path, color }) {
         />
         <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
-        {path ? (
+        <Drone path={path || "/drone3d.obj"} color={color} />
+
+        {/* {path ? (
           <DroneFBX path={path} color={color} />
         ) : (
           <Drone path={"/drone3d.obj"} color={color} />
-        )}
+        )} */}
 
         <ContactShadows
           rotation={[Math.PI / 2, 0, 0]}

@@ -5,7 +5,6 @@ import { OrbitControls } from "@react-three/drei";
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Drone from '../3d/Drone';
-import DroneFBX from "../3d/DroneFBX";
 
 const HeroSection = () => {
   // Gold color definitions
@@ -200,8 +199,7 @@ const HeroSection = () => {
               <ambientLight intensity={0.8} />
               <directionalLight position={[10, 10, 5]} intensity={1} />
               <pointLight position={[-10, -10, -10]} intensity={0.5} />
-              {/* <Drone path="/drone3d.obj" /> */}
-              <DroneFBX path="/drone2.fbx" />
+              <Drone path="/models/bfly.obj" />
               <OrbitControls 
                 enableDamping 
                 dampingFactor={0.05} 
