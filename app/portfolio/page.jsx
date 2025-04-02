@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useMemo } from 'react';
 
 export default function Portfolio() {
   // Animation variants
@@ -26,6 +27,25 @@ export default function Portfolio() {
       }
     }
   };
+
+  // Replace random particles with fixed predetermined positions
+  const particles = useMemo(() => [
+    { left: 20.45, top: 30.25, duration: 5.5, delay: 0.2, opacity: "70" },
+    { left: 85.12, top: 15.87, duration: 4.8, delay: 0.4, opacity: "50" },
+    { left: 40.36, top: 80.93, duration: 6.2, delay: 0.6, opacity: "40" },
+    { left: 10.78, top: 60.14, duration: 5.3, delay: 0.8, opacity: "70" },
+    { left: 70.29, top: 45.65, duration: 7.1, delay: 1.0, opacity: "50" },
+    { left: 15.53, top: 10.42, duration: 4.9, delay: 1.2, opacity: "40" },
+    { left: 50.81, top: 35.17, duration: 6.4, delay: 1.4, opacity: "70" },
+    { left: 8.23, top: 90.56, duration: 5.8, delay: 1.6, opacity: "50" },
+    { left: 35.69, top: 50.38, duration: 7.3, delay: 1.8, opacity: "40" },
+    { left: 55.94, top: 85.27, duration: 6.7, delay: 2.0, opacity: "70" },
+    { left: 25.41, top: 25.76, duration: 5.2, delay: 2.2, opacity: "50" },
+    { left: 90.37, top: 12.18, duration: 7.5, delay: 2.4, opacity: "40" },
+    { left: 42.84, top: 75.49, duration: 6.1, delay: 2.6, opacity: "70" },
+    { left: 75.16, top: 70.83, duration: 5.7, delay: 2.8, opacity: "50" },
+    { left: 5.62, top: 55.91, duration: 6.9, delay: 3.0, opacity: "40" },
+  ], []);
 
   // Project data
   const projects = [
@@ -118,22 +138,22 @@ export default function Portfolio() {
 
         {/* Floating particles */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(15)].map((_, i) => (
+          {particles.map((particle, i) => (
             <motion.div
               key={i}
-              className={`absolute w-1 h-1 rounded-full bg-gold/${i % 3 === 0 ? '70' : i % 3 === 1 ? '50' : '40'}`}
+              className={`absolute w-1 h-1 rounded-full bg-gold/${particle.opacity}`}
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
               }}
               animate={{
                 y: [0, -15, 0],
                 opacity: [0.7, 1, 0.7],
               }}
               transition={{
-                duration: 3 + (i % 5),
+                duration: particle.duration,
                 repeat: Infinity,
-                delay: i * 0.2,
+                delay: particle.delay,
               }}
             />
           ))}

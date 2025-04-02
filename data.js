@@ -12,7 +12,7 @@ export const drones = [
         "Extended Operational Range: 16-hour endurance flight capability for deep penetration missions",
         "Smart Payload Adaptability: Modular weapon integration for diverse mission profiles"
       ],
-      dronePath: "/drone3d.obj",
+      dronePath: "/models/damisa.obj",
       url: "/damisa"
     },
     {
@@ -29,7 +29,7 @@ export const drones = [
         "Secure Communication: Encrypted data links to prevent interception",
         "Rapid Deployment: VTOL capability for launch and recovery"
       ],
-      dronePath: "/drone3d.obj",
+      dronePath: "/models/argini.obj",
       url: "/argini"
     },
     {
@@ -45,7 +45,7 @@ export const drones = [
         "Rapid Deployment & Multi-Terrain Adaptability: VTOL capability for land reconnaissance",
         "Modular Mission Customization: Flexible payload integration for tactical surveillance and border security"
       ],
-      dronePath: "/drone3d.obj",
+      dronePath: "/models/arsenio.obj",
       url: "/arsenio"
     },
     {
@@ -79,7 +79,7 @@ export const drones = [
         "Secure Communications: Encrypted data transmission to prevent signal interception",
         "Multi-Terrain Versatility: Operates effectively in urban and rural environments"
       ],
-      dronePath: "/drone3d.obj",
+      dronePath: "/models/bfly.obj",
       url: "/bfly"
     }
   ];

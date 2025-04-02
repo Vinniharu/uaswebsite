@@ -199,7 +199,7 @@ const HeroSection = () => {
               <ambientLight intensity={0.8} />
               <directionalLight position={[10, 10, 5]} intensity={1} />
               <pointLight position={[-10, -10, -10]} intensity={0.5} />
-              <Drone path="/models/bfly.obj" />
+              <Drone path="/models/damisa.obj" />
               <OrbitControls 
                 enableDamping 
                 dampingFactor={0.05} 

@@ -58,7 +58,7 @@ export const drones = [
       launchMethod: 'Vertical take-off',
       recoveryMethod: 'Vertical landing',
     },
-    modelPath: '',
+    modelPath: '/models/argini.obj',
     imageUrl: '/argini.webp',
     colorAccent: '#3d5a80' // Blue-ish
   },

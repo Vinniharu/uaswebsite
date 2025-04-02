@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Drone from "../3d/Drone";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
@@ -60,6 +60,30 @@ const ProductsSection = () => {
     },
   ];
 
+  // Replace random particles with fixed predetermined positions
+  const particles = useMemo(() => [
+    { width: 3.27, height: 7.82, left: 18.08, top: 31.83, duration: 12, delay: 0.5 },
+    { width: 2.44, height: 2.43, left: 6.76, top: 61.17, duration: 11, delay: 1.2 },
+    { width: 4.43, height: 6.27, left: 58.19, top: 60.22, duration: 13, delay: 2.1 },
+    { width: 5.92, height: 7.00, left: 24.82, top: 81.93, duration: 14, delay: 0.8 },
+    { width: 9.00, height: 4.78, left: 60.72, top: 73.77, duration: 12.5, delay: 1.5 },
+    { width: 7.83, height: 8.12, left: 86.39, top: 52.33, duration: 11.8, delay: 2.2 },
+    { width: 7.57, height: 4.70, left: 68.65, top: 46.34, duration: 13.2, delay: 0.3 },
+    { width: 6.00, height: 9.70, left: 5.60, top: 60.62, duration: 12.7, delay: 1.9 },
+    { width: 7.66, height: 9.02, left: 57.18, top: 24.04, duration: 14.3, delay: 0.6 },
+    { width: 6.50, height: 4.58, left: 68.05, top: 59.55, duration: 11.4, delay: 2.5 },
+    { width: 6.42, height: 3.88, left: 14.29, top: 78.45, duration: 13.7, delay: 0.9 },
+    { width: 4.56, height: 7.64, left: 1.10, top: 17.48, duration: 12.3, delay: 1.7 },
+    { width: 2.72, height: 5.89, left: 76.40, top: 21.51, duration: 11.6, delay: 2.8 },
+    { width: 3.64, height: 3.71, left: 63.91, top: 86.58, duration: 14.1, delay: 0.4 },
+    { width: 3.04, height: 8.25, left: 94.24, top: 15.22, duration: 12.9, delay: 1.3 },
+    { width: 4.37, height: 8.51, left: 37.06, top: 79.93, duration: 11.2, delay: 2.4 },
+    { width: 8.28, height: 4.83, left: 25.27, top: 21.74, duration: 13.5, delay: 0.7 },
+    { width: 4.34, height: 4.96, left: 67.76, top: 58.32, duration: 12.1, delay: 1.6 },
+    { width: 3.90, height: 4.38, left: 46.26, top: 9.54, duration: 11.9, delay: 2.7 },
+    { width: 2.63, height: 3.42, left: 82.62, top: 5.61, duration: 13.8, delay: 0.2 },
+  ], []);
+
   // Auto-rotation through products
   useEffect(() => {
     const interval = setInterval(() => {
@@ -106,24 +130,24 @@ const ProductsSection = () => {
       
       {/* Floating particles */}
       <div className="absolute inset-0 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute rounded-full bg-gold/30"
             style={{
-              width: Math.random() * 8 + 2 + "px",
-              height: Math.random() * 8 + 2 + "px",
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              width: `${particle.width}px`,
+              height: `${particle.height}px`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -40, 0],
               opacity: [0.1, 0.7, 0.1],
             }}
             transition={{
-              duration: Math.random() * 5 + 10,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
           />
         ))}
