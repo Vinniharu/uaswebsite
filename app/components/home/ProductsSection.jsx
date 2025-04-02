@@ -29,7 +29,7 @@ const ProductsSection = () => {
       specs: ["Range: 200km", "Endurance: 16hrs", "Silent operation"],
       color: "#D4AF37",
       image: "/argini.webp",
-      modelPath: "",
+      modelPath: "/models/argini.obj",
     },
     {
       id: "arsenio",
@@ -47,7 +47,7 @@ const ProductsSection = () => {
       specs: ["Range: 120km", "Stealth design", "Multi-spectrum imaging"],
       color: "#D4AF37",
       image: "/xander.webp",
-      modelPath: "",
+      modelPath: "/models/xander.obj",
     },
     {
       id: "bfly",

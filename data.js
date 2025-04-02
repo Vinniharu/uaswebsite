@@ -63,7 +63,7 @@ export const drones = [
         "Versatile Deployment Capability: VTOL functionality for land-based and ISR missions",
         "Modular Payload Integration: Customizable sensor and communication payloads"
       ],
-      dronePath: "/drone3d.obj",
+      dronePath: "/models/xander.obj",
       url: "/xander"
     },
     {
