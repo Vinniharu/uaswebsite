@@ -122,7 +122,7 @@ export const drones = [
       launchMethod: 'Vertical take-off',
       recoveryMethod: 'Vertical landing with emergency parachute',
     },
-    modelPath: '',
+    modelPath: '/models/xander.obj',
     imageUrl: '/xander.webp',
     colorAccent: '#38b000' // Green
   },
