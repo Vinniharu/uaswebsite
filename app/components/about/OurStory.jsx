@@ -44,7 +44,7 @@ const OurStory = () => {
                   {/* Background image */}
 
                   <img
-                    src="/briech.webp"
+                    src="/img/homeabout.JPG"
                     alt="Smart UAV Technology"
                     className="w-full h-full object-cover"
                     style={{

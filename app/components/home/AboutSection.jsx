@@ -26,7 +26,7 @@ const AboutSection = () => {
                 <div className="glass-effect w-full h-full rounded-lg relative">
                   {/* Background image */}
                   <Image 
-                    src="/bgdrone.webp" 
+                    src="/img/heroimg.JPG" 
                     alt="Drone background" 
                     fill 
                     style={{

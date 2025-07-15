@@ -104,7 +104,7 @@ const WhyChooseUsSection = () => {
                 {/* Background image */}
                 <div className="absolute inset-0">
                   <img 
-                    src="/uavcareer.webp" 
+                    src="/img/abt1.JPG" 
                     alt="UAV Career" 
                     className="w-full h-full object-cover"
                   />

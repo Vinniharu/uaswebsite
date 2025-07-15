@@ -6,6 +6,7 @@ import { useState, useEffect, useMemo } from "react";
 import Drone from "../3d/Drone";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment } from "@react-three/drei";
+import Image from "next/image";
 
 const ProductsSection = () => {
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -19,7 +20,7 @@ const ProductsSection = () => {
         "Next-generation unmanned aerial system for precision strikes",
       specs: ["Range: 150km", "Payload: 8kg", "Speed: 120km/h"],
       color: "#D4AF37",
-      image: "/damisa.webp",
+      image: "/img/damisa1.jpg",
       modelPath: "/models/damisa.obj",
     },
     {
@@ -28,7 +29,7 @@ const ProductsSection = () => {
       description: "Hybrid VTOL UAV for long-endurance intelligence missions",
       specs: ["Range: 200km", "Endurance: 16hrs", "Silent operation"],
       color: "#D4AF37",
-      image: "/argini.webp",
+      image: "/img/argini1.jpg",
       modelPath: "/models/argini.obj",
     },
     {
@@ -37,7 +38,7 @@ const ProductsSection = () => {
       description: "High-endurance ISR drone with 8-hour flight capability",
       specs: ["Range: 180km", "Ceiling: 6000m", "Advanced sensors"],
       color: "#D4AF37",
-      image: "/arsenio.webp",
+      image: "/img/arsenio1.jpg",
       modelPath: "/models/arsenio.obj",
     },
     {
@@ -46,7 +47,7 @@ const ProductsSection = () => {
       description: "Extended ISR platform with 6-hour endurance",
       specs: ["Range: 120km", "Stealth design", "Multi-spectrum imaging"],
       color: "#D4AF37",
-      image: "/xander.webp",
+      image: "/img/xander1.jpg",
       modelPath: "/models/xander.obj",
     },
     {
@@ -55,7 +56,7 @@ const ProductsSection = () => {
       description: "Compact solution for rapid ISR missions",
       specs: ["Range: 80km", "Weight: 2.5kg", "Rapid deployment"],
       color: "#D4AF37",
-      image: "/fly.webp",
+      image: "/img/bfly1.jpg",
       modelPath: "/models/bfly.obj",
     },
   ];
@@ -91,6 +92,14 @@ const ProductsSection = () => {
     }, 8000);
     return () => clearInterval(interval);
   }, [products.length]);
+
+  const nextProduct = () => {
+    setActiveIndex(prev => (prev + 1) % products.length);
+  };
+
+  const prevProduct = () => {
+    setActiveIndex(prev => (prev - 1 + products.length) % products.length);
+  };
 
   // Variants for animations
   const sectionVariants = {
@@ -162,7 +171,7 @@ const ProductsSection = () => {
           variants={sectionVariants}
         >
           <motion.h2
-            className="text-4xl md:text-5xl font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-gold via-yellow-300 to-gold tracking-tight"
+            className="text-4xl md:text-5xl font-bold inline-block bg-clip-text text-transparent bg-gradient-to-r from-yellow-600 via-yellow-300 to-gold tracking-tight"
             variants={titleVariants}
           >
             Advanced UAV Systems
@@ -192,8 +201,23 @@ const ProductsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px]">
-              {/* 3D Model Display */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] relative">
+              {/* Next and prev buttons */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-4 z-20">
+                <button onClick={prevProduct} className="w-10 h-10 rounded-full bg-black/50 text-yellow-600 flex items-center justify-center hover:bg-black/70 transition-colors">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 19L8 12L15 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+              <div className="absolute top-1/2 -translate-y-1/2 right-4">
+                <button onClick={nextProduct} className="w-10 h-10 rounded-full bg-black/50 text-yellow-600 flex items-center justify-center hover:bg-black/70 transition-colors">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 5L16 12L9 19" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </button>
+              </div>
+              
               <div className="relative h-[400px] lg:h-full">
                 <div className="absolute inset-0">
                   <motion.div
@@ -202,7 +226,7 @@ const ProductsSection = () => {
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
                   >
-                    <Canvas
+                    {/* <Canvas
                       camera={{ position: [0, 0, 8], fov: 40 }}
                       dpr={[1, 2]}
                       gl={{ antialias: true, alpha: true }}
@@ -229,7 +253,8 @@ const ProductsSection = () => {
                         autoRotate
                         autoRotateSpeed={0.8}
                       />
-                    </Canvas>
+                    </Canvas> */}
+                    <Image src={products[activeIndex].image} alt={products[activeIndex].name} fill />
                   </motion.div>
                 </div>
                 
@@ -237,17 +262,17 @@ const ProductsSection = () => {
                 <div className="absolute top-6 left-6 rounded-lg px-3 py-1.5 bg-black/30 backdrop-blur-sm border border-gold/30 text-xs text-gold font-mono">
                   SYSTEM: ACTIVE
                 </div>
-                <div className="absolute bottom-6 left-6 z-10">
+                <div className="absolute bottom-6 left-6 z-10 bg-yellow-600/80 rounded-lg px-3 py-1 border border-gold/30">
                   {products[activeIndex].specs.map((spec, i) => (
                     <motion.div 
                       key={i}
-                      className="flex items-center mb-2"
+                      className="flex items-center mb-2 "
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 + i * 0.1 }}
                     >
                       <div className="w-2 h-2 rounded-full bg-gold mr-2"></div>
-                      <div className="text-sm text-gray-300 font-mono">{spec}</div>
+                      <div className="text-sm text-white font-mono">{spec}</div>
                     </motion.div>
                   ))}
                 </div>

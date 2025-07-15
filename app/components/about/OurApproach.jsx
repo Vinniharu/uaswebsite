@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 
 const OurApproach = () => {
   return (
@@ -26,7 +25,7 @@ const OurApproach = () => {
                 <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
                   {/* Background image */}
                   <img
-                    src="/logo.webp"
+                    src="/img/ee.JPG"
                     alt="Briech UAS Headquarters"
                     className="w-full h-fit object-cover"
                   />

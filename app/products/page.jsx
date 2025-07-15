@@ -1,9 +1,5 @@
-import DamisaSection from "../components/products/DamisaSection";
-import ArginiSection from "../components/products/ArginiSection";
-import ArsenioSection from "../components/products/ArsenioSection";
-import XanderSection from "../components/products/XanderSection";
-import BflySection from "../components/products/BflySection";
-import ServicesSection from "../components/products/ServicesSection";
+import ProductHero from "../components/products/ProductHero";
+import DroneListings from "../components/products/DroneListings";
 
 export const metadata = {
   title: "Products & Services - Briech UAS",
@@ -13,12 +9,8 @@ export const metadata = {
 export default function Products() {
   return (
     <>
-      <DamisaSection />
-      <ArginiSection />
-      <ArsenioSection />
-      <XanderSection />
-      <BflySection />
-      <ServicesSection />
+    <ProductHero />
+    <DroneListings/>
     </>
   );
 } 

@@ -110,7 +110,7 @@ const OurFacility = () => {
           viewport={{ once: true }}
         >
           <img 
-            src="/argini.webp" 
+            src="/img/damisa3.jpg" 
             alt="Briech UAS Facility Concept" 
             className="w-full h-full object-cover"
             style={{
