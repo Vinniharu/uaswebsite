@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect, useMemo } from "react";
-import Drone from "../3d/Drone";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
 import Image from "next/image";
 
 const ProductsSection = () => {
@@ -20,7 +17,7 @@ const ProductsSection = () => {
         "Next-generation unmanned aerial system for precision strikes",
       specs: ["Range: 150km", "Payload: 8kg", "Speed: 120km/h"],
       color: "#D4AF37",
-      image: "/img/damisa1.jpg",
+      image: "/img/damisa1.JPG",
       modelPath: "/models/damisa.obj",
     },
     {
@@ -38,7 +35,7 @@ const ProductsSection = () => {
       description: "High-endurance ISR drone with 8-hour flight capability",
       specs: ["Range: 180km", "Ceiling: 6000m", "Advanced sensors"],
       color: "#D4AF37",
-      image: "/img/arsenio1.jpg",
+      image: "/img/arsenio1.JPG",
       modelPath: "/models/arsenio.obj",
     },
     {
