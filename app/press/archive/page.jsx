@@ -3,88 +3,136 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-// This data would typically come from an API or database
 const allPressReleases = [
   {
     id: 1,
     date: "April 2, 2025",
-    title: "Briech UAS Showcases Nigeria's First Indigenous Attack Drones and Bombs During CDS Visit",
-    summary: "Chief of Defence Staff, General Christopher Musa, commends Briech UAS for advancing Nigeria's defence capabilities through locally manufactured unmanned aerial vehicles and explosive devices.",
-    slug: "indigenous-attack-drones-cds-visit"
-  }
+    title:
+      "Briech UAS Showcases Nigeria's First Indigenous Attack Drones and Bombs During CDS Visit",
+    summary:
+      "Chief of Defence Staff, General Christopher Musa, commends Briech UAS for advancing Nigeria's defence capabilities through locally manufactured unmanned aerial vehicles and explosive devices.",
+    slug: "indigenous-attack-drones-cds-visit",
+  },
 ];
 
 export default function PressArchive() {
   return (
-    <div className="min-h-screen py-24 pt-40">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-black">
-            Official Press <span className="text-gold">Archive</span>
-          </h1>
-          <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="text-black/70 max-w-2xl mx-auto">
-            Browse all official press releases and announcements from Briech UAS.
-          </p>
-        </motion.div>
+    <main className="bg-white text-black">
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-grid-light opacity-40 pointer-events-none z-0" />
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0) 65%)",
+          }}
+        />
 
-        <div className="max-w-4xl mx-auto">
-          <div className="space-y-8">
+        <div className="relative z-10 px-4 md:px-8 pt-6">
+          <Link href="/press" className="btn-bracket btn-bracket-light">
+            ‹ RETURN TO PRESS
+          </Link>
+        </div>
+
+        <div className="relative z-10 px-2 sm:px-4 md:px-8 pt-6 md:pt-10 pointer-events-none overflow-hidden">
+          <motion.h1
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
+          >
+            PRESS&nbsp;ARCHIVE
+          </motion.h1>
+        </div>
+
+        <div className="relative z-10 mt-auto px-4 md:px-8 pb-10 md:pb-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+            <div className="md:col-span-2 max-w-2xl">
+              <div className="eyebrow text-gold mb-3">// FULL_BRIEFING_LOG</div>
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+                Every official briefing transmitted from{" "}
+                <span className="text-gold">Briech command</span>.
+              </p>
+            </div>
+
+            <div className="hud-list text-right text-white/80 self-end justify-self-end">
+              <div>
+                ENTRIES = <span className="text-gold">{String(allPressReleases.length).padStart(3, "0")}</span>
+              </div>
+              <div>
+                CHANNEL = <span className="text-gold">PUBLIC_AFFAIRS</span>
+              </div>
+              <div>
+                CLEARANCE = <span className="text-gold">UNCLASSIFIED</span>
+              </div>
+              <div className="mt-3">
+                ARCHIVE = <span className="text-gold">2025_ONWARDS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LIST */}
+      <section className="py-20 md:py-28 bg-white text-black border-t border-black/10">
+        <div className="px-4 md:px-8">
+          <div className="mb-10">
+            <div className="eyebrow text-black/60 mb-3">// COMPLETE_DOSSIER</div>
+            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+              All Briefings
+            </h2>
+          </div>
+
+          <div className="border-t border-black/15">
             {allPressReleases.map((release, index) => (
               <motion.div
                 key={release.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true, amount: 0.1 }}
-                className="glass-effect border border-gold/20 rounded-lg p-6 shadow-soft hover:shadow-gold transition-all duration-300"
+                viewport={{ once: true, amount: 0.2 }}
+                className="border-b border-black/15 hover:bg-gold/5 transition-colors group"
               >
-                <div className="text-gold font-medium mb-2">{release.date}</div>
-                <h3 className="text-xl md:text-2xl font-bold text-black mb-3">
-                  {release.title}
-                </h3>
-                <p className="text-black/70 mb-4">{release.summary}</p>
-                <Link 
-                  href={`/press/${release.slug}`} 
-                  className="inline-flex items-center text-gold hover:text-gold/80 font-medium transition-colors"
+                <Link
+                  href={`/press/${release.slug}`}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-start py-8 md:py-10"
                 >
-                  Read More
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-5 w-5 ml-1" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <div className="lg:col-span-3">
+                    <div className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-black/55 mb-2">
+                      // BRIEFING_{String(release.id).padStart(3, "0")}
+                    </div>
+                    <div className="font-mono-tactical text-sm uppercase tracking-[0.12em] text-gold">
+                      {release.date}
+                    </div>
+                  </div>
+
+                  <div className="lg:col-span-7">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold uppercase tracking-tight leading-tight mb-3 group-hover:text-gold transition-colors">
+                      {release.title}
+                    </h3>
+                    <p className="text-black/70 leading-relaxed text-sm md:text-base">
+                      {release.summary}
+                    </p>
+                  </div>
+
+                  <div className="lg:col-span-2 flex lg:justify-end">
+                    <span className="btn-bracket btn-bracket-dark group-hover:!text-gold">
+                      READ BRIEFING
+                    </span>
+                  </div>
                 </Link>
               </motion.div>
             ))}
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <Link 
-              href="/press" 
-              className="inline-flex items-center justify-center px-6 py-3 border border-gold text-gold bg-transparent hover:bg-gold hover:text-white transition-colors duration-300 rounded-md font-medium"
-            >
-              Back to Press Page
+          <div className="mt-10">
+            <Link href="/press" className="btn-bracket btn-bracket-dark">
+              ‹ RETURN TO PRESS
             </Link>
-          </motion.div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
-} 
+}

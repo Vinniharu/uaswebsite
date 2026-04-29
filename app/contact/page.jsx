@@ -1,6 +1,5 @@
 import ContactHero from "../components/contact/ContactHero";
 import ContactInfo from "../components/contact/ContactInfo";
-import ContactForm from "../components/contact/ContactForm";
 import ServiceAreas from "../components/contact/ServiceAreas";
 
 export const metadata = {
@@ -13,7 +12,6 @@ export default function Contact() {
     <>
       <ContactHero />
       <ContactInfo />
-      <ContactForm />
       <ServiceAreas />
     </>
   );

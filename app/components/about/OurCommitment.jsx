@@ -1,192 +1,137 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const OurCommitment = () => {
-  return (
-    <section className="py-24 relative overflow-hidden bg-white">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
-      
-      <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
-            Our <span className="text-gold">Commitment</span>
-          </h2>
-          <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="text-black/70 max-w-2xl mx-auto">
-            We are committed to excellence, reliability, and future-ready technology. As a strategic partner dedicated to pushing the boundaries of UAV technology.
-          </p>
-        </motion.div>
+  const commitments = [
+    {
+      title: "Reliable, High-Performance UAV Systems",
+      description:
+        "We build our unmanned aerial vehicles for durability and efficiency, ensuring they perform reliably in even the most challenging conditions and mission-critical activities.",
+    },
+    {
+      title: "International Aviation & Safety Compliance",
+      description:
+        "All our products and operations meet or exceed international aviation and safety regulations, ensuring peace of mind and legal compliance for our clients.",
+    },
+    {
+      title: "Forward-Thinking Aerial Solutions",
+      description:
+        "Our approach incorporates AI, automation, and next-generation aerial solutions, ensuring our clients benefit from the latest advancements in UAV technology.",
+    },
+  ];
 
-        <div className="flex flex-col md:flex-row gap-12">
-          {/* Left side - Image with animation */}
-          <motion.div 
-            className="md:w-1/2 flex justify-center"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
+  return (
+    <section className="py-20 md:py-28 bg-white text-black border-t border-black/10">
+      <div className="px-4 md:px-8">
+        <div className="mb-12">
+          <div className="eyebrow text-black/60 mb-3">// FORWARD_OBJECTIVES</div>
+          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            Our Commitment
+          </h2>
+          <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">
+            We are committed to excellence, reliability, and future-ready
+            technology — a strategic partner dedicated to pushing the
+            boundaries of UAV capability.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start mb-10">
+          {/* commitments list */}
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="relative max-w-md">
-              {/* Hexagon pattern */}
-              <div className="absolute -top-6 -left-6 w-72 h-72">
-                <svg viewBox="0 0 100 100" className="w-full h-full text-gold/10">
-                  <defs>
-                    <pattern id="hexagons" width="10" height="18" patternUnits="userSpaceOnUse" patternTransform="scale(0.5)">
-                      <g stroke="currentColor" strokeWidth="0.5" fill="none">
-                        <path d="M10,6.4L5,12.8L0,6.4L5,0L10,6.4z" />
-                        <path d="M5,12.8L0,19.2L5,25.6L10,19.2L5,12.8z" />
-                        <path d="M15,6.4L20,12.8L15,19.2L10,12.8L15,6.4z" />
-                      </g>
-                    </pattern>
-                  </defs>
-                  <rect width="100" height="100" fill="url(#hexagons)" />
-                </svg>
-              </div>
-          
-              {/* Main image */}
-              <div className="glass-effect rounded-lg overflow-hidden relative border border-gold/20 shadow-soft">
-                <div className="aspect-[4/3] relative">
-                  <img 
-                    src="/uavcareer2.webp" 
-                    alt="Our Commitment to Excellence" 
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                    }}
-                  />
-                </div>
-              </div>
-              
-              {/* Floating elements */}
-              <motion.div 
-                className="absolute -bottom-4 -right-4 w-20 h-20 bg-white rounded-full border border-gold/30 flex items-center justify-center shadow-soft z-10"
-                animate={{ 
-                  y: [0, -10, 0], 
-                  rotate: [0, 10, 0],
-                }}
-                transition={{ 
-                  duration: 5, 
-                  repeat: Infinity,
-                  repeatType: "reverse" 
-                }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </motion.div>
-              
-              <motion.div 
-                className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-full border border-blue-accent/30 flex items-center justify-center shadow-soft z-10"
-                animate={{ 
-                  y: [0, 10, 0], 
-                  rotate: [0, -10, 0],
-                }}
-                transition={{ 
-                  duration: 4, 
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: 1
-                }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-blue-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </motion.div>
+            <div className="border border-black/15">
+              {commitments.map((c, i) => (
+                <motion.div
+                  key={i}
+                  className={`p-7 md:p-9 ${
+                    i < commitments.length - 1 ? "border-b border-black/15" : ""
+                  } hover:bg-gold/5 transition-colors`}
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-black/55">
+                      // OBJECTIVE_{String(i + 1).padStart(3, "0")}
+                    </span>
+                    <span className="text-gold font-mono-tactical text-[10px] uppercase tracking-[0.18em]">
+                      ACTIVE
+                    </span>
+                  </div>
+                  <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-tight mb-3 leading-snug">
+                    {c.title}
+                  </h3>
+                  <p className="text-sm text-black/70 leading-relaxed">
+                    {c.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
-          
-          {/* Right side - Commitment points */}
-          <motion.div 
-            className="md:w-1/2"
-            initial={{ opacity: 0, y: 30 }}
+
+          {/* image panel */}
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="space-y-10">
-              {/* Commitment Point 1 */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="relative pl-16"
-              >
-                <div className="absolute left-0 top-0 w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center">
-                  <span className="text-gold font-bold text-xl">01</span>
+            <div className="relative h-[420px] md:h-[520px] w-full overflow-hidden border border-black/15 bg-neutral-100">
+              <Image
+                src="/uavcareer2.webp"
+                alt="Briech UAS commitment"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center" }}
+                className="grayscale hover:grayscale-0 transition-all duration-700"
+              />
+              <span className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-white" />
+              <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-white" />
+              <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-white" />
+              <span className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-white" />
+              <div className="absolute top-3 right-4 hud-list text-white/85">
+                <div>
+                  TRAJECTORY = <span className="text-gold">FORWARD</span>
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Reliable, High-Performance UAV Systems</h3>
-                <p className="text-black/70">
-                  We build our unmanned aerial vehicles for durability and efficiency, ensuring they perform reliably in even the most challenging conditions and mission-critical activities.
-                </p>
-              </motion.div>
-              
-              {/* Commitment Point 2 */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="relative pl-16"
-              >
-                <div className="absolute left-0 top-0 w-12 h-12 bg-blue-accent/10 rounded-full flex items-center justify-center">
-                  <span className="text-blue-accent font-bold text-xl">02</span>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 bg-black/70 backdrop-blur-sm px-4 py-3 max-w-xs">
+                <div className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-white/65 mb-1">
+                  COMPLIANCE_RATE
                 </div>
-                <h3 className="text-xl font-semibold mb-3">International Aviation and Safety Compliance</h3>
-                <p className="text-black/70">
-                  All our products and operations meet or exceed international aviation and safety regulations, ensuring peace of mind and legal compliance for our clients.
-                </p>
-              </motion.div>
-              
-              {/* Commitment Point 3 */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                viewport={{ once: true }}
-                className="relative pl-16"
-              >
-                <div className="absolute left-0 top-0 w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center">
-                  <span className="text-gold font-bold text-xl">03</span>
+                <div className="text-3xl font-extrabold text-gold leading-none">
+                  100%
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Forward-Thinking Aerial Solutions</h3>
-                <p className="text-black/70">
-                  Our approach incorporates AI, automation, and next-generation aerial solutions, ensuring our clients benefit from the latest advancements in UAV technology.
-                </p>
-              </motion.div>
-              
-              {/* Call to action */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="pt-6"
-              >
-                <a href="/contact" className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group">
-                  <span>Partner with us</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </a>
-              </motion.div>
+              </div>
             </div>
           </motion.div>
         </div>
+
+        {/* gold accent banner CTA */}
+        <Link href="/contact" className="block mt-6 group">
+          <div className="bg-gold text-black px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 transition-colors hover:bg-black hover:text-gold">
+            <div>
+              <div className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
+                PARTNER&nbsp;WITH&nbsp;BRIECH
+              </div>
+              <div className="text-[12px] uppercase tracking-[0.15em] mt-1 opacity-80">
+                Engage with our command for tailored UAS partnerships
+              </div>
+            </div>
+            <span className="btn-bracket">ENQUIRE</span>
+          </div>
+        </Link>
       </div>
     </section>
   );
 };
 
-export default OurCommitment; 
+export default OurCommitment;

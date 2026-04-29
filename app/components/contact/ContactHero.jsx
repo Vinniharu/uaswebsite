@@ -1,50 +1,97 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 const ContactHero = () => {
   return (
-    <section className="relative py-32 md:py-40 overflow-hidden bg-white">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
-      
-      <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center max-w-3xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+    <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden pt-20">
+      {/* faint grid texture */}
+      <div className="absolute inset-0 bg-grid-light opacity-40 pointer-events-none z-0" />
+      {/* gold radial glow */}
+      <div
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none z-0"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0) 65%)",
+        }}
+      />
+
+      {/* GIANT WORDMARK */}
+      <div className="relative z-10 px-2 sm:px-4 md:px-8 pt-2 md:pt-4 pointer-events-none overflow-hidden">
+        <motion.h1
+          initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-black">
-            Get In <span className="text-gold">Touch</span>
-          </h1>
-          <div className="w-24 h-1 bg-gold mx-auto mb-8"></div>
-          <motion.p 
-            className="text-lg text-black/70 mb-10"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Ready to elevate your operations with cutting-edge drone technology? Contact our team for inquiries, customized solutions, or to schedule a consultation.
-          </motion.p>
-          
+          GET&nbsp;IN&nbsp;TOUCH
+        </motion.h1>
+      </div>
+
+      {/* BOTTOM ROW — tagline + status readout */}
+      <div className="relative z-10 mt-auto px-4 md:px-8 pb-10 md:pb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+          {/* tagline */}
           <motion.div
+            className="md:col-span-2 max-w-2xl"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <button onClick={() => document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth' })} className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors shadow-sm hover:shadow-md group">
-              <span>Reach Out Today</span>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 group-hover:translate-x-1 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 3a1 1 0 00-1 1v10.586l-3.293-3.293a1 1 0 10-1.414 1.414l5 5a1 1 0 001.414 0l5-5a1 1 0 00-1.414-1.414L11 14.586V4a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-            </button>
+            <div className="eyebrow text-gold mb-3">// TRANSMIT_MESSAGE</div>
+            <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              Engage with{" "}
+              <span className="text-gold">Briech command</span> for inquiries,
+              partnerships, and tailored UAS solutions.
+            </p>
+            <p className="mt-5 text-white/80 max-w-xl text-base leading-relaxed">
+              Ready to elevate your operations with cutting-edge drone
+              technology? Reach our team for inquiries, customized solutions,
+              or to schedule a consultation.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <a
+                href="mailto:Info@briechuas.com"
+                className="btn-bracket btn-bracket-gold"
+              >
+                TRANSMIT MESSAGE
+              </a>
+              <a
+                href="tel:+2348032027605"
+                className="btn-bracket btn-bracket-light"
+              >
+                CALL COMMAND
+              </a>
+            </div>
           </motion.div>
-        </motion.div>
+
+          {/* status readout */}
+          <motion.div
+            className="hud-list text-right text-white/80 self-end justify-self-end"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+          >
+            <div>
+              CHANNEL = <span className="text-gold">OPEN</span>
+            </div>
+            <div>
+              RESPONSE_TIME = <span className="text-gold">24H</span>
+            </div>
+            <div>
+              CHARTER = <span className="text-gold">CIVILIAN+DEFENCE</span>
+            </div>
+            <div>
+              CLEARANCE = <span className="text-gold">REQUEST_GRANTED</span>
+            </div>
+            <div className="mt-3">
+              SECTOR = <span className="text-gold">9.0820°N_7.2476°E</span>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default ContactHero; 
+export default ContactHero;

@@ -2,195 +2,153 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  FaEnvelope,
-  FaPhone,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
 
 const Footer = () => {
-  const footerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
-
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gray-light border-t border-gray">
-      <motion.div
-        className="container mx-auto px-4 py-16"
-        variants={footerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Company Info */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <Link href="/" className="inline-block">
-              <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8 }}
-                src="/logo.webp"
-                alt="Briech UAS"
-                width={160}
-                height={160}
-              />
-            </Link>
-            <p className="text-black/70 text-sm">
-              Africa's Premier Unmanned Aerial Systems Manufacturer delivering
-              cutting-edge drone technology for commercial, security, and
-              defense operations.
-            </p>
-          </motion.div>
-
-          {/* Quick Links */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h3 className="text-lg font-medium text-gold">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Our Products
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Products */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h3 className="text-lg font-medium text-gold">Our Products</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/drones/damisa"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Damisa Combat Drone
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/drones/argini"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Argini Reconnaissance Drone
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/drones/arsenio"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Arsenio Reconnaissance Drone
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/drones/xander"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Xander Reconnaissance Drone
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/drones/bfly"
-                  className="text-black/70 hover:text-gold transition-colors duration-300"
-                >
-                  Bfly Reconnaissance Drone
-                </Link>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div variants={itemVariants} className="space-y-6">
-            <h3 className="text-lg font-medium text-gold">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <FaMapMarkerAlt className="text-gold mt-1 flex-shrink-0" />
-                <span className="text-black/70">Kuje, Abuja, Nigeria</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <FaPhone className="text-gold flex-shrink-0" />
-                <span className="text-black/70">+234 803 2027 605</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <FaEnvelope className="text-gold flex-shrink-0" />
-                <span className="text-black/70">marketing@briechuas.com</span>
-              </li>
-            </ul>
-          </motion.div>
-        </div>
-
-        {/* Bottom Bar */}
+    <footer className="bg-black text-white border-t border-white/10">
+      {/* TOP: column grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 border-b border-white/10">
+        {/* CAPABILITIES */}
         <motion.div
-          variants={itemVariants}
-          className="border-t border-gray-300 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center"
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="p-6 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10"
         >
-          <p className="text-black/50 text-sm">
-            &copy; {currentYear} Briech UAS. All rights reserved.
+          <div className="eyebrow text-white/55 mb-4 sm:mb-5">// CAPABILITIES</div>
+          <ul className="space-y-1.5 sm:space-y-2">
+            {[
+              ["Damisa", "/drones/damisa"],
+              ["Argini", "/drones/argini"],
+              ["Arsenio", "/drones/arsenio"],
+              ["Xander", "/drones/xander"],
+              ["Bfly", "/drones/bfly"],
+            ].map(([name, href]) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="text-lg sm:text-xl md:text-2xl font-extrabold uppercase tracking-tight hover:text-gold transition-colors"
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        {/* ABOUT / CONNECT */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.05 }}
+          className="p-6 sm:p-8 md:p-12 border-b md:border-b-0 md:border-r border-white/10"
+        >
+          <div className="eyebrow text-white/55 mb-4 sm:mb-5">// ABOUT</div>
+          <ul className="space-y-1.5 sm:space-y-2 mb-8 sm:mb-10">
+            {[
+              ["Mission", "/about"],
+              ["Personnel", "/about"],
+              ["Press", "/press"],
+              ["Portfolio", "/portfolio"],
+              ["Fleet", "/products"],
+            ].map(([name, href]) => (
+              <li key={name}>
+                <Link
+                  href={href}
+                  className="text-lg sm:text-xl md:text-2xl font-extrabold uppercase tracking-tight hover:text-gold transition-colors"
+                >
+                  {name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="eyebrow text-white/55 mb-3 sm:mb-4">// CONNECT</div>
+          <ul className="space-y-1.5 sm:space-y-2">
+            <li>
+              <a
+                href="https://www.instagram.com/briechuas_/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg sm:text-xl md:text-2xl font-extrabold uppercase tracking-tight hover:text-gold transition-colors"
+              >
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://web.facebook.com/profile.php?id=61574236304867"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg sm:text-xl md:text-2xl font-extrabold uppercase tracking-tight hover:text-gold transition-colors"
+              >
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://x.com/BriechUAS"
+                target="_blank"
+                rel="noreferrer"
+                className="text-lg sm:text-xl md:text-2xl font-extrabold uppercase tracking-tight hover:text-gold transition-colors"
+              >
+                X
+              </a>
+            </li>
+          </ul>
+        </motion.div>
+
+        {/* TRANSMIT_MESSAGE */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="bg-gold text-black p-6 sm:p-8 md:p-12"
+        >
+          <div className="eyebrow text-black/65 mb-4 sm:mb-5">// TRANSMIT_MESSAGE</div>
+          <Link href="/contact" className="btn-bracket btn-bracket-dark mb-8 sm:mb-10">
+            ENQUIRE
+          </Link>
+
+          <div className="mt-8 sm:mt-10 mb-3 eyebrow text-black/65">
+            // JOIN_OUR_MISSION
+          </div>
+          <p className="text-sm leading-relaxed mb-5 max-w-sm">
+            Join our team of innovators — explore open opportunities and help
+            forge the next generation of autonomous capability.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link
-              href="/privacy-policy"
-              className="text-black/50 hover:text-gold text-sm transition-colors duration-300"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms-of-service"
-              className="text-black/50 hover:text-gold text-sm transition-colors duration-300"
-            >
-              Terms of Service
-            </Link>
+          <Link href="/contact" className="btn-bracket btn-bracket-dark">
+            POSITIONS
+          </Link>
+
+          <div className="mt-8 sm:mt-10 font-mono-tactical text-[10px] sm:text-[11px] uppercase tracking-[0.15em] text-black/75 space-y-1 break-words">
+            <div>KUJE = ABUJA, NIGERIA</div>
+            <div>+234 803 2027 605</div>
+            <div>INFO@BRIECHUAS.COM</div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
+
+      {/* GIANT WORDMARK */}
+      <div className="px-2 sm:px-4 md:px-8 py-6 sm:py-10 md:py-14 border-b border-white/10 overflow-hidden">
+        <h2 className="font-extrabold tracking-tighter leading-[0.85] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center whitespace-nowrap">
+          BRIECH&nbsp;UAS
+        </h2>
+      </div>
+
+      {/* META BAR */}
+      <div className="px-4 md:px-8 py-4 md:py-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-1.5 md:gap-3 font-mono-tactical text-[9px] sm:text-[10px] uppercase tracking-[0.16em] md:tracking-[0.18em] text-white/55">
+        <div className="flex items-center gap-4">
+          <span>© {currentYear} BRIECH UAS</span>
+        </div>
+        <div>9.0820°N, 7.2476°E</div>
+        <div>A BRIECH PRODUCTION</div>
+      </div>
     </footer>
   );
 };

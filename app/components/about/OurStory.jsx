@@ -5,160 +5,108 @@ import Image from "next/image";
 
 const OurStory = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-white">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
+    <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden pt-20">
+      {/* full-bleed image background */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/img/homeabout.JPG"
+          alt="Briech UAS facility"
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center" }}
+          className="opacity-40 grayscale"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
+      </div>
+      {/* grid overlay */}
+      <div className="absolute inset-0 bg-grid-light opacity-30 pointer-events-none z-0" />
 
-      <div className="container mx-auto px-4 pt-16">
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+      {/* GIANT WORDMARK */}
+      <div className="relative z-10 px-2 sm:px-4 md:px-8 pt-2 md:pt-4 pointer-events-none overflow-hidden">
+        <motion.h1
+          initial={{ opacity: 0, y: 80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+          className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
         >
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-black">
-            About <span className="text-gold">Briech UAS</span>
-          </h1>
-          <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="text-black/70 max-w-2xl mx-auto">
-            Africa's premier unmanned aerial systems manufacturer building
-            cutting-edge drone technology for mission-critical activities.
-          </p>
-        </motion.div>
+          ABOUT&nbsp;BRIECH
+        </motion.h1>
+      </div>
 
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Left side - Image with animations */}
+      {/* BOTTOM ROW — tagline + status readout */}
+      <div className="relative z-10 mt-auto px-4 md:px-8 pb-10 md:pb-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+          {/* tagline */}
           <motion.div
-            className="lg:w-1/2 relative hidden lg:block"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
+            className="md:col-span-2 max-w-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <div className="relative h-[450px] w-full">
-              {/* Pattern background instead of image */}
-              <div className="absolute inset-0 bg-white rounded-lg overflow-hidden shadow-soft">
-                <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
-                  {/* Background image */}
+            <div className="eyebrow text-gold mb-3">// IDENTITY_PROFILE</div>
+            <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              A proudly Nigerian UAS manufacturer{" "}
+              <span className="text-gold">forging</span> Africa&apos;s
+              autonomous aerial future.
+            </p>
+            <p className="mt-5 text-white/80 max-w-xl text-base leading-relaxed">
+              Briech UAS was established in 2021 with a vision to revolutionize
+              aerial surveillance and unmanned systems. We are building
+              Africa&apos;s biggest drone manufacturing facility in Kuje, Abuja
+              — a 10-hectare campus producing the most advanced automation
+              technology and unmanned aircraft systems on the continent.
+            </p>
+          </motion.div>
 
-                  <img
-                    src="/img/homeabout.JPG"
-                    alt="Smart UAV Technology"
-                    className="w-full h-full object-cover"
-                    style={{
-                      objectFit: "cover",
-                      objectPosition: "center",
-                    }}
-                  />
-                  {/* Gold overlay patterns */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
-                      backgroundSize: "20px 20px",
-                      opacity: 0.3,
-                    }}
-                  ></div>
-
-                  {/* Gold diagonal lines */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
-                      backgroundSize: "30px 30px",
-                      opacity: 0.2,
-                    }}
-                  ></div>
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold opacity-30 rounded-lg"></div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-blue-accent opacity-30 rounded-lg"></div>
-
-              {/* Gold accent */}
-              <motion.div
-                className="absolute top-1/2 -right-3 h-[2px] bg-gold"
-                initial={{ width: 0 }}
-                whileInView={{ width: "25%" }}
-                transition={{ duration: 1, delay: 0.5 }}
-                viewport={{ once: true }}
-              ></motion.div>
+          {/* status readout */}
+          <motion.div
+            className="hud-list text-right text-white/80 self-end justify-self-end"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.7 }}
+          >
+            <div>
+              FOUNDED = <span className="text-gold">2021</span>
+            </div>
+            <div>
+              HQ = <span className="text-gold">KUJE_ABUJA</span>
+            </div>
+            <div>
+              CHARTER = <span className="text-gold">AERIAL_DOMINANCE</span>
+            </div>
+            <div>
+              STATUS = <span className="text-gold">OPERATIONAL</span>
+            </div>
+            <div className="mt-3">
+              REACH = <span className="text-gold">AFRICA_AND_BEYOND</span>
             </div>
           </motion.div>
-
-          {/* Right side - Text content */}
-          <motion.div
-            className="lg:w-1/2"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-black">
-              Our <span className="text-gold">Story</span>
-            </h2>
-
-            <div className="w-20 h-1 bg-gold mb-8"></div>
-
-            <motion.p
-              className="text-black/80 mb-6 leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              Briech UAS was established in 2021 with a vision to revolutionize
-              aerial surveillance and unmanned systems in Africa and beyond. As
-              a manufacturer of unmanned aerial vehicles for mission-critical
-              activities, we are building Africa's biggest drone manufacturing
-              facility in Kuje, Abuja, Nigeria.
-            </motion.p>
-
-            <motion.p
-              className="text-black/80 mb-8 leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              The multi-million-dollar facility will cover 10 hectares of land
-              and manufacture the most advanced automation technology and
-              unmanned aircraft systems.
-            </motion.p>
-
-            {/* Stats in gold boxes */}
-            <motion.div
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <div className="glass-effect border border-gold/30 p-4 text-center rounded shadow-gold">
-                <div className="text-gold text-2xl font-bold">2021</div>
-                <div className="text-black/60 text-sm">Established</div>
-              </div>
-              <div className="glass-effect border border-gold/30 p-4 text-center rounded shadow-gold">
-                <div className="text-gold text-2xl font-bold">10+</div>
-                <div className="text-black/60 text-sm">Hectares</div>
-              </div>
-              <div className="glass-effect border border-gold/30 p-4 text-center rounded shadow-gold">
-                <div className="text-gold text-2xl font-bold">UAV</div>
-                <div className="text-black/60 text-sm">Technology</div>
-              </div>
-              <div className="glass-effect border border-gold/30 p-4 text-center rounded shadow-gold">
-                <div className="text-gold text-2xl font-bold">Africa</div>
-                <div className="text-black/60 text-sm">& Beyond</div>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
+
+        {/* stats row */}
+        <motion.div
+          className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/15 font-mono-tactical"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.9 }}
+        >
+          <Stat label="Established" value="2021" />
+          <Stat label="Hectares" value="10+" />
+          <Stat label="Discipline" value="UAV" />
+          <Stat label="Coverage" value="AFRICA+" />
+        </motion.div>
       </div>
     </section>
   );
 };
+
+const Stat = ({ label, value }) => (
+  <div>
+    <div className="text-2xl md:text-3xl font-extrabold text-gold mb-1">{value}</div>
+    <div className="text-[10px] text-white/55 uppercase tracking-[0.18em]">
+      {label}
+    </div>
+  </div>
+);
 
 export default OurStory;

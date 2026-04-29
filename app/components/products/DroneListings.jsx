@@ -1,5 +1,6 @@
 "use client";
-import { motion } from "framer-motion";
+
+import Link from "next/link";
 import DroneSections from "./DroneSections";
 
 const drones = [
@@ -17,7 +18,7 @@ const drones = [
       "High-Speed Maneuverability with aerodynamic design",
       "Electronic Warfare Resilience with adaptive frequency hopping",
       "Extended Operational Range with 16-hour endurance",
-      "Smart Payload Adaptability for diverse mission profiles"
+      "Smart Payload Adaptability for diverse mission profiles",
     ],
     image1: "/img/damisa1.JPG",
     image2: "/img/damisa2.JPG",
@@ -38,7 +39,7 @@ const drones = [
       "Stealth & Low Detectability with low thermal signature",
       "Autonomous Navigation with intelligent route planning",
       "Secure Communication through encrypted data links",
-      "Rapid Deployment with VTOL capability"
+      "Rapid Deployment with VTOL capability",
     ],
     image1: "/img/argini1.jpg",
     image2: "/img/argini2.jpg",
@@ -52,13 +53,13 @@ const drones = [
     description:
       "Hybrid VTOL UAV for high-endurance ISR missions with 8-hour flight capability",
     content:
-      'Inspired by ancient Greek mythology symbolizing strength and resilience, the Arsenio Reconnaissance Drone is built to be the ultimate aerial sentinel—swift, unrelenting, and all-seeing, ensuring forces detect threats first and strike with certainty.',
+      "Inspired by ancient Greek mythology symbolizing strength and resilience, the Arsenio Reconnaissance Drone is built to be the ultimate aerial sentinel—swift, unrelenting, and all-seeing, ensuring forces detect threats first and strike with certainty.",
     features: [
       "High-Endurance Surveillance for 8-hour continuous flight",
       "Advanced Sensor Suite with EO/IR cameras, LIDAR, and SAR",
       "Low Detectability & Stealth Operations",
       "Rapid Deployment & Multi-Terrain Adaptability",
-      "Modular Mission Customization for tactical surveillance"
+      "Modular Mission Customization for tactical surveillance",
     ],
     image1: "/img/arsenio1.JPG",
     image2: "/img/arsenio2.JPG",
@@ -80,7 +81,7 @@ const drones = [
       "Autonomous Navigation with object recognition",
       "Secure & Resilient Communication against cyber threats",
       "Versatile Deployment Capability with VTOL functionality",
-      "Modular Payload Integration for customizable sensors"
+      "Modular Payload Integration for customizable sensors",
     ],
     image1: "/img/xander1.jpg",
     image2: "/img/xander2.JPG",
@@ -101,7 +102,7 @@ const drones = [
       "Stealth & Low Detectability for undetected operations",
       "Autonomous Operations with object recognition",
       "Secure Communications with encrypted data transmission",
-      "Multi-Terrain Versatility for urban and rural environments"
+      "Multi-Terrain Versatility for urban and rural environments",
     ],
     image1: "/img/bfly1.jpg",
     image2: "/img/bfly2.JPG",
@@ -111,11 +112,28 @@ const drones = [
 
 const DroneListings = () => {
   return (
-    <div>
+    <>
       {drones.map((drone) => (
         <DroneSections key={drone.id} drone={drone} />
       ))}
-    </div>
+
+      {/* closing gold accent banner */}
+      <section className="px-4 md:px-8 py-10 md:py-14 bg-white border-t border-black/10">
+        <Link href="/contact" className="block group">
+          <div className="bg-gold text-black px-6 md:px-8 py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 transition-colors hover:bg-black hover:text-gold">
+            <div>
+              <div className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight">
+                CUSTOM&nbsp;UAS&nbsp;PROFILE
+              </div>
+              <div className="text-[12px] uppercase tracking-[0.15em] mt-1 opacity-80">
+                Mission demands beyond the standard fleet — engage Briech command
+              </div>
+            </div>
+            <span className="btn-bracket">REQUEST BRIEFING</span>
+          </div>
+        </Link>
+      </section>
+    </>
   );
 };
 

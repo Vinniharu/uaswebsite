@@ -1,152 +1,116 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import Image from "next/image";
 
 const OurFacility = () => {
-  return (
-    <section className="py-24 relative overflow-hidden bg-white">
-      {/* Background elements */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-gold opacity-5 -skew-x-12 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-1/4 h-1/2 bg-blue-accent opacity-5 -skew-x-12 -translate-x-1/4"></div>
-      
-      <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
-            Our <span className="text-gold">Facility</span>
-          </h2>
-          <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="text-black/70 max-w-2xl mx-auto">
-            We are building Africa's biggest drone manufacturing facility in Kuje, Abuja, Nigeria.
-          </p>
-        </motion.div>
+  const stats = [
+    { value: "100K", label: "Square Meters" },
+    { value: "100M", label: "Share Capital" },
+    { value: "$17.6M", label: "Capital Employed" },
+    { value: "700M", label: "Runway Length" },
+  ];
 
-        {/* Grid of facility features */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {/* Feature 1 */}
-          <motion.div 
-            className="bg-white p-6 rounded-lg shadow-soft border border-gold/10 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-bl-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-            
-            <div className="mb-4 text-gold text-5xl font-light">100K</div>
-            <h3 className="text-xl font-semibold mb-2">Square Meters</h3>
-            <p className="text-black/60 text-sm">
-              100,000 sqm of land in Abuja, Nigeria for our state-of-the-art facility
-            </p>
-          </motion.div>
-          
-          {/* Feature 2 */}
-          <motion.div 
-            className="bg-white p-6 rounded-lg shadow-soft border border-gold/10 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-bl-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-            
-            <div className="mb-4 text-gold text-5xl font-light">100M</div>
-            <h3 className="text-xl font-semibold mb-2">Share Capital</h3>
-            <p className="text-black/60 text-sm">
-              One hundred million share capital private limited liability company
-            </p>
-          </motion.div>
-          
-          {/* Feature 3 */}
-          <motion.div 
-            className="bg-white p-6 rounded-lg shadow-soft border border-gold/10 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-bl-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-            
-            <div className="mb-4 text-gold text-5xl font-light">$17.6M</div>
-            <h3 className="text-xl font-semibold mb-2">Capital Employment</h3>
-            <p className="text-black/60 text-sm">
-              Capital employment of 17.6 Million Dollars for cutting-edge technology
-            </p>
-          </motion.div>
-          
-          {/* Feature 4 */}
-          <motion.div 
-            className="bg-white p-6 rounded-lg shadow-soft border border-gold/10 relative overflow-hidden group"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-            viewport={{ once: true }}
-          >
-            <div className="absolute top-0 right-0 w-20 h-20 bg-gold/5 rounded-bl-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-gold/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-            
-            <div className="mb-4 text-gold text-5xl font-light">700m</div>
-            <h3 className="text-xl font-semibold mb-2">Runway</h3>
-            <p className="text-black/60 text-sm">
-              Will host a 700m runway, three factories, and a large 300 sqm hangar
-            </p>
-          </motion.div>
+  return (
+    <section className="py-20 md:py-28 bg-white text-black border-t border-black/10">
+      <div className="px-4 md:px-8">
+        <div className="mb-12">
+          <div className="eyebrow text-black/60 mb-3">// FORWARD_OPERATING_BASE</div>
+          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            Our Facility
+          </h2>
+          <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">
+            We are building Africa&apos;s biggest drone manufacturing facility
+            in Kuje, Abuja, Nigeria — a future-ready campus engineered to
+            support the most advanced automation technology and unmanned
+            aircraft systems.
+          </p>
         </div>
 
-        {/* Facility illustration/image */}
-        <motion.div 
-          className="relative h-[400px] rounded-lg overflow-hidden shadow-soft border border-gold/10"
-          initial={{ opacity: 0, y: 30 }}
+        {/* stat strip */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 border border-black/15 font-mono-tactical mb-10"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <img 
-            src="/img/damisa3.jpg" 
-            alt="Briech UAS Facility Concept" 
-            className="w-full h-full object-cover"
-            style={{
-              objectFit: 'cover',
-              objectPosition: 'center',
-            }}
+          {stats.map((stat, i) => (
+            <div
+              key={i}
+              className={`p-6 md:p-8 ${
+                i < stats.length - 1 ? "border-b md:border-b-0" : ""
+              } ${i % 2 === 0 ? "md:border-r border-r" : ""} ${
+                i < 2 ? "border-b md:border-b-0" : ""
+              } ${i === 2 ? "md:border-r" : ""} border-black/15`}
+            >
+              <div className="text-3xl md:text-4xl font-extrabold text-black mb-2">
+                {stat.value}
+              </div>
+              <div className="text-[10px] text-black/55 uppercase tracking-[0.18em]">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* banner image with HUD overlay */}
+        <motion.div
+          className="relative h-[420px] md:h-[560px] w-full overflow-hidden border border-black/15 bg-neutral-100"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <Image
+            src="/img/damisa3.jpg"
+            alt="Briech UAS facility"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            className="grayscale"
           />
-          
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
-            <div className="p-8 text-white max-w-2xl">
-              <h3 className="text-2xl font-bold mb-2">Future-Ready Infrastructure</h3>
-              <p className="opacity-80">
-                Our facility is designed to support the most advanced automation technology and unmanned aircraft systems, setting new standards in Africa's aerospace sector.
-              </p>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+
+          {/* corner brackets */}
+          <span className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-white" />
+          <span className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-white" />
+          <span className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-white" />
+          <span className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-white" />
+
+          {/* HUD readout top-right */}
+          <div className="absolute top-6 right-6 hud-list text-white/85 text-right">
+            <div>
+              LOCATION = <span className="text-gold">KUJE_ABUJA</span>
+            </div>
+            <div>
+              RUNWAY = <span className="text-gold">700M</span>
+            </div>
+            <div>
+              CAPITAL = <span className="text-gold">17.6M_USD</span>
+            </div>
+            <div>
+              LAND = <span className="text-gold">100K_SQM</span>
+            </div>
+            <div>
+              HANGAR = <span className="text-gold">300_SQM</span>
             </div>
           </div>
-          
-          {/* Animated elements */}
-          <motion.div 
-            className="absolute top-10 right-10 w-32 h-32"
-            animate={{ 
-              y: [0, -15, 0], 
-              rotateZ: [0, 10, 0],
-            }}
-            transition={{ 
-              duration: 8, 
-              repeat: Infinity,
-              repeatType: "reverse" 
-            }}
-          >
-            <div className="w-full h-full border-2 border-dashed border-gold/30 rounded-full"></div>
-          </motion.div>
+
+          {/* caption */}
+          <div className="absolute bottom-6 left-6 right-6 max-w-2xl">
+            <div className="eyebrow text-gold mb-2">// INFRASTRUCTURE_BRIEF</div>
+            <h3 className="text-2xl md:text-3xl font-extrabold uppercase tracking-tight text-white mb-2">
+              Future-Ready Infrastructure
+            </h3>
+            <p className="text-white/80 text-sm leading-relaxed max-w-xl">
+              Three factories, a 300 sqm hangar, and a 700-metre runway — set
+              to deliver continental-scale UAS manufacturing.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 };
 
-export default OurFacility; 
+export default OurFacility;

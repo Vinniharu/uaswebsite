@@ -2,230 +2,182 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useState } from "react";
 
-const DroneSections = ({ drone, reverse = false }) => {
+const DroneSections = ({ drone }) => {
   const [currentImage, setCurrentImage] = useState(0);
   const images = [drone.image1, drone.image2, drone.image3];
 
-  const nextImage = () => {
+  const nextImage = (e) => {
+    e.preventDefault();
     setCurrentImage((prev) => (prev + 1) % images.length);
   };
 
-  const prevImage = () => {
+  const prevImage = (e) => {
+    e.preventDefault();
     setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // Alternate image / content order
+  const reverse = drone.id % 2 === 0;
+  const slug = drone.name.toLowerCase();
+
   return (
-    <section className="py-24 relative overflow-hidden bg-white">
-      <div className="container mx-auto px-4">
-        <div className={`flex flex-col lg:flex-row items-center gap-16 ${drone.id % 2 === 0 ? 'lg:flex-row-reverse' : ''}`}>
-          {/* Image section */}
+    <section className="py-16 md:py-24 bg-white text-black border-t border-black/10">
+      <div className="px-4 md:px-8">
+        {/* section header */}
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <div className="eyebrow text-black/60 mb-2">
+              // SYSTEM_{String(drone.id).padStart(3, "0")} ·{" "}
+              <span className="text-gold">{drone.type.toUpperCase()}</span>
+            </div>
+            <h2 className="bracket-heading text-4xl md:text-6xl font-extrabold uppercase tracking-tight">
+              {drone.name}
+            </h2>
+          </div>
+          <span className="status-dot hidden md:inline-block" />
+        </div>
+
+        <div
+          className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch ${
+            reverse ? "" : ""
+          }`}
+        >
+          {/* IMAGE PANEL */}
           <motion.div
-            className="lg:w-1/2 relative hidden lg:block"
-            initial={{ opacity: 0, x: reverse ? 50 : -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true, amount: 0.3 }}
+            className={`lg:col-span-7 ${reverse ? "lg:order-2" : "lg:order-1"}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6 }}
           >
-            <Link href={`/drones/${drone.name.toLowerCase()}`}>
-              <div className="relative h-[450px] w-full group cursor-pointer">
-                <div className="absolute inset-0 bg-white rounded-lg overflow-hidden shadow-soft">
-                  <div className="glass-effect w-full h-full rounded-lg relative flex items-center justify-center">
-                    {/* Main image display */}
-                    <div className="relative w-full h-full overflow-hidden rounded-lg">
-                      <img 
-                        src={images[currentImage]} 
-                        alt={`${drone.name} ${drone.title}`}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        style={{
-                          objectFit: 'cover',
-                          objectPosition: 'center',
-                        }}
-                      />
-                      
-                      {/* Navigation arrows */}
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          prevImage();
-                        }}
-                        className="z-30 absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                        </svg>
-                      </button>
-                      
-                      <button
-                        onClick={(e) => {
-                          e.preventDefault();
-                          nextImage();
-                        }}
-                        className="z-30 absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/70"
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                      </button>
-                    </div>
+            <Link href={`/drones/${slug}`} className="block group">
+              {/* image header */}
+              <div className="flex items-center justify-between px-5 py-3 border-x border-t border-black/15 font-mono-tactical text-[10px] uppercase tracking-[0.18em]">
+                <span className="text-black/55">// VISUAL_FEED = ACTIVE</span>
+                <span className="text-gold">
+                  FRAME_{String(currentImage + 1).padStart(2, "0")}/
+                  {String(images.length).padStart(2, "0")}
+                </span>
+              </div>
 
-                    {/* Image indicators */}
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
-                      {images.map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            setCurrentImage(index);
-                          }}
-                          className={`w-3 h-3 rounded-full transition-all ${
-                            index === currentImage 
-                              ? 'bg-gold' 
-                              : 'bg-white/50 hover:bg-white/80'
-                          }`}
-                        />
-                      ))}
-                    </div>
+              <div className="relative h-[360px] md:h-[480px] w-full bg-grid border-x border-black/15 overflow-hidden">
+                <Image
+                  src={images[currentImage]}
+                  alt={`${drone.name} ${drone.title}`}
+                  fill
+                  style={{ objectFit: "cover", objectPosition: "center" }}
+                  className="grayscale group-hover:grayscale-0 transition-all duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
 
-                    {/* Gold overlay patterns */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        backgroundImage: `radial-gradient(var(--gold) 1px, transparent 1px)`,
-                        backgroundSize: "20px 20px",
-                        opacity: 0.3,
-                      }}
-                    ></div>
+                {/* corner brackets */}
+                <span className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-white" />
+                <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-white" />
+                <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-white" />
+                <span className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-white" />
 
-                    {/* Gold diagonal lines */}
-                    <div
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        backgroundImage: `linear-gradient(45deg, var(--gold) 1px, transparent 1px)`,
-                        backgroundSize: "30px 30px",
-                        opacity: 0.2,
-                      }}
-                    ></div>
+                {/* nav arrows */}
+                <button
+                  onClick={prevImage}
+                  aria-label="Previous frame"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/70 hover:bg-gold hover:text-black text-white flex items-center justify-center font-mono-tactical text-sm transition-colors"
+                >
+                  ‹
+                </button>
+                <button
+                  onClick={nextImage}
+                  aria-label="Next frame"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/70 hover:bg-gold hover:text-black text-white flex items-center justify-center font-mono-tactical text-sm transition-colors"
+                >
+                  ›
+                </button>
 
-                    {/* View specs overlay */}
-                    <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="px-4 py-2 bg-gold text-black font-medium rounded">
-                        View Specifications
-                      </div>
-                    </div>
-                  </div>
+                {/* hover overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                  <span className="btn-bracket btn-bracket-light opacity-0 group-hover:opacity-100 transition-opacity">
+                    ACCESS SPECS
+                  </span>
                 </div>
+              </div>
 
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -left-4 w-24 h-24 border-2 border-gold opacity-30 rounded-lg"></div>
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-2 border-blue-accent opacity-30 rounded-lg"></div>
-
-                {/* Gold accent */}
-                <motion.div
-                  className={`absolute top-1/2 ${reverse ? '-left-3' : '-right-3'} h-[2px] bg-gold`}
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "25%" }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  viewport={{ once: true }}
-                ></motion.div>
+              {/* image footer with indicators */}
+              <div className="flex items-center justify-between px-5 py-3 border border-black/15 font-mono-tactical text-[10px] uppercase tracking-[0.18em]">
+                <div className="flex items-center gap-2">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        setCurrentImage(index);
+                      }}
+                      aria-label={`Frame ${index + 1}`}
+                      className={`h-1.5 transition-all ${
+                        index === currentImage
+                          ? "w-8 bg-gold"
+                          : "w-4 bg-black/25 hover:bg-black/50"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-black/55">{drone.title.toUpperCase()}</span>
               </div>
             </Link>
           </motion.div>
 
-          {/* Content section */}
+          {/* CONTENT PANEL */}
           <motion.div
-            className="lg:w-1/2"
-            initial={{ opacity: 0, y: 30 }}
+            className={`lg:col-span-5 ${reverse ? "lg:order-1" : "lg:order-2"}`}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true, amount: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <div className="flex items-center gap-3 mb-3">
-              <h2 className="text-3xl md:text-4xl font-bold text-black">
-                {drone.name} <span className="text-gold">{drone.title}</span>
-              </h2>
-              <div className="px-3 py-1 bg-gold/10 rounded-full text-gold text-xs font-semibold">
-                {drone.type}
+            <div className="border border-black/15 h-full flex flex-col">
+              {/* role row */}
+              <div className="flex items-center justify-between px-5 py-3 border-b border-black/15 font-mono-tactical text-[10px] uppercase tracking-[0.18em]">
+                <span className="text-black/55">// ROLE_PROFILE</span>
+                <span className="text-gold">{drone.title.toUpperCase()}</span>
+              </div>
+
+              <div className="p-6 md:p-8 flex-1 flex flex-col">
+                <p className="text-gold font-mono-tactical text-xs uppercase tracking-[0.15em] mb-4 leading-relaxed">
+                  {drone.description}
+                </p>
+
+                <p className="text-black/80 leading-relaxed text-sm md:text-base mb-6">
+                  {drone.content}
+                </p>
+
+                <div className="border-t border-black/15 pt-5 mt-auto">
+                  <div className="eyebrow text-black/55 mb-3">
+                    // KEY_FEATURES
+                  </div>
+                  <ul className="space-y-2 mb-6">
+                    {drone.features.map((feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-black/75 leading-relaxed"
+                      >
+                        <span className="text-gold font-mono-tactical mt-[2px] shrink-0">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <Link
+                    href={`/drones/${slug}`}
+                    className="btn-bracket btn-bracket-dark"
+                  >
+                    ACCESS SPECS
+                  </Link>
+                </div>
               </div>
             </div>
-
-            <p className="text-blue-accent font-medium mb-6 italic">
-              {drone.description}
-            </p>
-
-            <div className="w-20 h-1 bg-gold mb-6"></div>
-
-            <motion.p
-              className="text-black/80 mb-6 leading-relaxed"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-            >
-              {drone.content}
-            </motion.p>
-
-            {/* Features */}
-            <motion.div
-              className="space-y-4 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-            >
-              <h3 className="font-semibold text-black">Key Features:</h3>
-              <ul className="space-y-3">
-                {drone.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <div className="mt-1 text-gold">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
-            >
-              <Link
-                href={`/drones/${drone.name.toLowerCase()}`}
-                className="inline-flex items-center gap-2 bg-gold text-white px-6 py-3 rounded-lg hover:bg-gold/90 transition-colors group"
-              >
-                <span>View Specifications</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
-            </motion.div>
           </motion.div>
         </div>
       </div>

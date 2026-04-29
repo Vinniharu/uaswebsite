@@ -3,7 +3,6 @@ import AboutSection from "./components/home/AboutSection";
 import ProductsSection from "./components/home/ProductsSection";
 import ServicesSection from "./components/home/ServicesSection";
 import WhyChooseUsSection from "./components/home/WhyChooseUsSection";
-import NewsletterSection from "./components/home/NewsletterSection";
 
 export default function Home() {
   return (
@@ -13,7 +12,6 @@ export default function Home() {
       <ProductsSection />
       <ServicesSection />
       <WhyChooseUsSection />
-      <NewsletterSection />
     </>
   );
 }

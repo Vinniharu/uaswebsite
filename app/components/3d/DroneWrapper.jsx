@@ -3,7 +3,6 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Environment, ContactShadows } from "@react-three/drei";
 import Drone from "./Drone";
-import DroneFBX from "./DroneFBX";
 
 export default function DroneWrapper({ path, color }) {
   return (
@@ -19,7 +18,11 @@ export default function DroneWrapper({ path, color }) {
         />
         <pointLight position={[-10, -10, -10]} intensity={0.5} />
 
-        <Drone path={path || "/drone3d.obj"} color={color} />
+        <Drone
+          path={path || "/drone3d.obj"}
+          color={color}
+          rotationSpeed={0.0008}
+        />
 
         {/* {path ? (
           <DroneFBX path={path} color={color} />

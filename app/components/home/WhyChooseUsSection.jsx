@@ -1,169 +1,110 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { FaUserTie, FaTools, FaClock, FaCogs } from 'react-icons/fa';
+import { motion } from "framer-motion";
+import { FaUserTie, FaTools, FaClock, FaCogs } from "react-icons/fa";
 
 const WhyChooseUsSection = () => {
   const features = [
     {
       icon: <FaUserTie />,
-      title: 'Expert-Led Innovation',
-      description: 'Our team of seasoned engineers and UAV specialists bring decades of combined experience to every project.'
+      title: "Expert-Led Innovation",
+      description:
+        "Our team of seasoned engineers and UAV specialists bring decades of combined experience to every project.",
     },
     {
       icon: <FaTools />,
-      title: 'End-to-End Solutions',
-      description: 'From initial design to deployment and comprehensive support, we handle every aspect of your UAV requirements.'
+      title: "End-to-End Solutions",
+      description:
+        "From initial design to deployment and comprehensive support, we handle every aspect of your UAV requirements.",
     },
     {
       icon: <FaClock />,
-      title: 'Rapid Response Support',
-      description: 'Our dedicated support team ensures minimal operational downtime with swift, effective solutions.'
+      title: "Rapid Response Support",
+      description:
+        "Our dedicated support team ensures minimal operational downtime with swift, effective solutions.",
     },
     {
       icon: <FaCogs />,
-      title: 'Custom-Tailored Systems',
-      description: 'We develop bespoke solutions perfectly matched to your specific industry applications and needs.'
-    }
+      title: "Custom-Tailored Systems",
+      description:
+        "We develop bespoke solutions perfectly matched to your specific industry applications and needs.",
+    },
   ];
 
   return (
-    <section className="py-24 relative bg-gray-light overflow-hidden">
-      {/* Diagonal background element */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -right-1/4 w-full h-full bg-blue-accent/5 skew-y-12 transform origin-top-right"></div>
-      </div>
-      
-      {/* Alternating line pattern */}
-      <div className="absolute inset-0 overflow-hidden opacity-30">
-        {Array.from({ length: 20 }).map((_, i) => (
-          <div 
-            key={i}
-            className="absolute h-px bg-gold/50"
-            style={{
-              top: `${(i * 5) + 2}%`,
-              left: i % 2 === 0 ? '0' : '50%',
-              width: i % 2 === 0 ? '40%' : '30%'
-            }}
-          ></div>
-        ))}
-      </div>
-      
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-16">
-          {/* Left side - Content */}
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -30 }}
+    <section className="py-20 md:py-28 bg-white text-black border-t border-black/10">
+      <div className="px-4 md:px-8">
+        <div className="mb-12">
+          <div className="eyebrow text-black/60 mb-3">// OPERATOR_ADVANTAGE</div>
+          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            Why Briech
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-black">
-              Why Choose <span className="text-gold">Briech UAS</span>
-            </h2>
-            <div className="w-20 h-1 bg-gold mb-8"></div>
-            <p className="text-black/70 mb-10 leading-relaxed">
-              At Briech UAS, we're committed to excellence in every aspect of unmanned aerial systems. Our focus on innovation, quality, and client satisfaction sets us apart in the industry.
+            <p className="text-black/80 leading-relaxed text-lg mb-6">
+              At Briech UAS, we&apos;re committed to excellence in every aspect
+              of unmanned aerial systems. Our focus on innovation, quality, and
+              client satisfaction sets us apart.
             </p>
-            
-            {/* Features list */}
-            <div className="space-y-8">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex items-start space-x-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white shadow-soft border border-gold/30 flex items-center justify-center text-gold">
-                    {feature.icon}
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2 text-black">{feature.title}</h3>
-                    <p className="text-black/70">{feature.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+
+            <div className="relative h-72 md:h-96 w-full overflow-hidden border border-black/15">
+              <img
+                src="/img/abt1.JPG"
+                alt="Briech UAS facility"
+                className="w-full h-full object-cover grayscale"
+              />
+              <span className="absolute top-2 left-2 w-4 h-4 border-t-2 border-l-2 border-white" />
+              <span className="absolute top-2 right-2 w-4 h-4 border-t-2 border-r-2 border-white" />
+              <span className="absolute bottom-2 left-2 w-4 h-4 border-b-2 border-l-2 border-white" />
+              <span className="absolute bottom-2 right-2 w-4 h-4 border-b-2 border-r-2 border-white" />
+              <div className="absolute bottom-4 left-4 bg-black/70 text-white px-4 py-3 backdrop-blur-sm">
+                <div className="text-3xl font-extrabold text-gold leading-none">
+                  100%
+                </div>
+                <div className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] mt-1">
+                  CLIENT_SATISFACTION = ATTAINED
+                </div>
+              </div>
             </div>
           </motion.div>
-          
-          {/* Right side - Image/Decorative element */}
-          <motion.div 
-            className="lg:w-1/2 relative hidden lg:block"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+
+          <motion.div
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
           >
-            <div className="relative h-[500px] max-w-md mx-auto">
-              {/* Main image background - replaced with gradient */}
-              <div className="absolute inset-0 glass-effect bg-gradient-to-br from-white to-gray-light rounded-lg overflow-hidden shadow-soft">
-                {/* Background image */}
-                <div className="absolute inset-0">
-                  <img 
-                    src="/img/abt1.JPG" 
-                    alt="UAV Career" 
-                    className="w-full h-full object-cover"
-                  />
+            <div className="grid grid-cols-1 md:grid-cols-2 border border-black/15">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className={`p-8 group hover:bg-gold/10 transition-colors duration-300 ${
+                    index % 2 === 0 ? "md:border-r" : ""
+                  } ${index < 2 ? "border-b" : ""} border-black/15`}
+                >
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-black/55">
+                      // {String(index + 1).padStart(3, "0")}
+                    </span>
+                    <span className="text-gold text-lg">{feature.icon}</span>
+                  </div>
+                  <h3 className="text-lg md:text-xl font-extrabold uppercase tracking-tight mb-3 leading-snug">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-black/70 leading-relaxed">
+                    {feature.description}
+                  </p>
                 </div>
-                
-                <div className="w-full h-full opacity-40 mix-blend-overlay" style={{
-                  background: `linear-gradient(45deg, var(--gold-light) 0%, var(--white) 100%)`,
-                }}>
-                  {/* Circuit-like pattern */}
-                  <div className="absolute inset-0 opacity-40" style={{
-                    backgroundImage: `
-                      linear-gradient(to right, var(--gold) 1px, transparent 1px),
-                      linear-gradient(to bottom, var(--gold) 1px, transparent 1px)`,
-                    backgroundSize: '30px 30px'
-                  }}></div>
-                </div>
-              </div>
-              
-              {/* Decorative pattern overlay */}
-              <div className="absolute inset-0 opacity-40">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: `
-                    radial-gradient(circle at 20% 35%, var(--gold) 0.5px, transparent 1px),
-                    radial-gradient(circle at 75% 44%, var(--gold) 0.5px, transparent 1px),
-                    radial-gradient(circle at 46% 60%, var(--gold) 0.5px, transparent 1px)`,
-                  backgroundSize: '60px 60px'
-                }}></div>
-              </div>
-              
-              {/* Animated border */}
-              <motion.div 
-                className="absolute inset-0 border-2 border-gold/30 rounded-lg"
-                animate={{ 
-                  boxShadow: ['0 0 0 rgba(212, 175, 55, 0)', '0 0 15px rgba(212, 175, 55, 0.3)', '0 0 0 rgba(212, 175, 55, 0)'] 
-                }}
-                transition={{ 
-                  duration: 3, 
-                  repeat: Infinity,
-                  repeatType: "reverse" 
-                }}
-              ></motion.div>
-              
-              {/* Gold accents */}
-              <div className="absolute -top-3 -left-3 w-20 h-20 border-t-2 border-l-2 border-gold"></div>
-              <div className="absolute -bottom-3 -right-3 w-20 h-20 border-b-2 border-r-2 border-gold"></div>
-              
-              {/* Tech element */}
-              <div className="absolute top-1/4 right-0 transform translate-x-1/2 glass-effect p-4 rounded border border-gold/30 shadow-soft">
-                <div className="text-gold text-xs">ADVANCED TECHNOLOGY</div>
-                <div className="w-full h-px bg-gold/50 my-2"></div>
-                <div className="text-black/70 text-sm">Next-Gen UAV Systems</div>
-              </div>
-              
-              {/* Performance element */}
-              <div className="absolute bottom-1/4 left-0 transform -translate-x-1/2 glass-effect p-4 rounded border border-gold/30 shadow-soft">
-                <div className="text-gold text-xs">PERFORMANCE</div>
-                <div className="w-full h-px bg-gold/50 my-2"></div>
-                <div className="text-black/70 text-sm">Industry-Leading Capabilities</div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
@@ -172,4 +113,4 @@ const WhyChooseUsSection = () => {
   );
 };
 
-export default WhyChooseUsSection; 
+export default WhyChooseUsSection;

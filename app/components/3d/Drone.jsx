@@ -40,7 +40,7 @@ function Loader() {
     );
 }
 
-export default function Drone({path, color}) {
+export default function Drone({path, color, stationary = false, rotationSpeed = 0.003}) {
     const droneRef = useRef();
     const propellerRefs = [useRef(), useRef(), useRef(), useRef()];
     const [model, setModel] = useState(null);
@@ -90,10 +90,10 @@ export default function Drone({path, color}) {
     }, [path]);
 
     useFrame(() => {
-        if (droneRef.current) {
+        if (droneRef.current && !stationary) {
             time += 0.01;
             droneRef.current.position.y = Math.sin(time) * 0.3; // Gentle floating effect
-            droneRef.current.rotation.y += 0.003; // Slow rotation
+            droneRef.current.rotation.y += rotationSpeed; // Slow rotation
         }
         propellerRefs.forEach((prop) => {
             if (prop.current) prop.current.rotation.y += 0.2;

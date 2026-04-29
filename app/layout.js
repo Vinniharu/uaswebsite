@@ -4,9 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
-import DroneNavbar from "./components/drones/DroneNavbar";
-import DroneFooter from "./components/drones/DroneFooter";
-import { usePathname } from "next/navigation";
+import CustomCursor from "./components/layout/CustomCursor";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -18,7 +17,6 @@ const geistMono = Geist_Mono({
 });
 
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
   return (
     <html lang="en">
       <head>
@@ -30,19 +28,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {pathname.includes("/drones") ? (
-          <>
-            <DroneNavbar />
-            {children}
-            <DroneFooter />
-          </>
-        ) : (
-          <>
-            <Navbar />
-            {children}
-            <Footer />
-          </>
-        )}
+        <CustomCursor />
+        <Navbar />
+        {children}
+        <Footer />
       </body>
     </html>
   );

@@ -6,79 +6,130 @@ import { mediaCoverage } from "@/app/data/press";
 
 export default function MediaPage() {
   return (
-    <div className="min-h-screen py-24 pt-40">
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center"
-        >
-          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-black">
-            Featured <span className="text-gold">Press Coverage</span>
-          </h1>
-          <div className="w-24 h-1 bg-gold mx-auto mb-6"></div>
-          <p className="text-black/70 max-w-2xl mx-auto">
-            Briech UAS featured in leading publications and media outlets across Nigeria and Africa.
-          </p>
-        </motion.div>
+    <main className="bg-white text-black">
+      {/* HERO */}
+      <section className="relative min-h-screen flex flex-col bg-black text-white overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-grid-light opacity-40 pointer-events-none z-0" />
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full pointer-events-none z-0"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(212,175,55,0.18) 0%, rgba(212,175,55,0) 65%)",
+          }}
+        />
 
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {mediaCoverage.map((article, index) => (
-              <motion.a
-                key={article.id}
-                href={article.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                viewport={{ once: true, amount: 0.1 }}
-                className="glass-effect border border-gold/10 rounded-lg p-6 shadow-soft hover:shadow-gold transition-all duration-300 flex flex-col h-full"
-              >
-                <div className="mb-2">
-                  <div className="text-sm font-medium text-gold">{article.publication}</div>
-                  <div className="text-xs text-black/40">{article.date}</div>
-                </div>
-                
-                <h3 className="text-lg font-bold text-black mb-3 flex-grow">
-                  {article.title}
-                </h3>
-                
-                <div className="flex items-center text-gold mt-2">
-                  <span className="text-sm font-medium">Read Article</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 ml-1" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </div>
-              </motion.a>
-            ))}
+        <div className="relative z-10 px-4 md:px-8 pt-6">
+          <Link href="/press" className="btn-bracket btn-bracket-light">
+            ‹ RETURN TO PRESS
+          </Link>
+        </div>
+
+        <div className="relative z-10 px-2 sm:px-4 md:px-8 pt-6 md:pt-10 pointer-events-none overflow-hidden">
+          <motion.h1
+            initial={{ opacity: 0, y: 80 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
+          >
+            MEDIA&nbsp;COVERAGE
+          </motion.h1>
+        </div>
+
+        <div className="relative z-10 mt-auto px-4 md:px-8 pb-10 md:pb-14">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+            <div className="md:col-span-2 max-w-2xl">
+              <div className="eyebrow text-gold mb-3">// EXTERNAL_FEED</div>
+              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+                Briech UAS in{" "}
+                <span className="text-gold">leading publications</span> across
+                Nigeria and Africa.
+              </p>
+            </div>
+
+            <div className="hud-list text-right text-white/80 self-end justify-self-end">
+              <div>
+                ARTICLES = <span className="text-gold">{String(mediaCoverage.length).padStart(3, "0")}</span>
+              </div>
+              <div>
+                CHANNEL = <span className="text-gold">EXTERNAL_PRESS</span>
+              </div>
+              <div>
+                ORIGIN = <span className="text-gold">CONTINENTAL</span>
+              </div>
+              <div className="mt-3">
+                ACCESS = <span className="text-gold">PUBLIC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GRID */}
+      <section className="py-20 md:py-28 bg-white text-black border-t border-black/10">
+        <div className="px-4 md:px-8">
+          <div className="mb-10">
+            <div className="eyebrow text-black/60 mb-3">// FEATURED_PRESS</div>
+            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+              Coverage Index
+            </h2>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <Link 
-              href="/press" 
-              className="inline-flex items-center justify-center px-6 py-3 border border-gold text-gold bg-transparent hover:bg-gold hover:text-white transition-colors duration-300 rounded-md font-medium"
-            >
-              Back to Press Page
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 border border-black/15">
+            {mediaCoverage.map((article, index) => {
+              const total = mediaCoverage.length;
+              const cols = 3;
+              const fullRows = Math.floor(total / cols);
+              const lastRowStart = fullRows * cols;
+              const isLastRow = index >= lastRowStart;
+              return (
+                <motion.a
+                  key={article.id}
+                  href={article.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: (index % 9) * 0.04 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  className={`p-7 md:p-9 hover:bg-gold/10 transition-colors duration-300 flex flex-col group border-black/15 ${
+                    (index + 1) % cols !== 0 ? "lg:border-r" : ""
+                  } ${index % 2 === 0 ? "md:border-r" : ""} ${
+                    !isLastRow ? "border-b" : ""
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-black/55">
+                      // {String(index + 1).padStart(3, "0")}
+                    </span>
+                    <span className="status-dot" />
+                  </div>
+
+                  <div className="font-mono-tactical text-[11px] uppercase tracking-[0.18em] text-gold mb-2">
+                    {article.publication}
+                  </div>
+                  <div className="font-mono-tactical text-[10px] uppercase tracking-[0.18em] text-black/55 mb-4">
+                    {article.date}
+                  </div>
+
+                  <h3 className="text-base md:text-lg font-extrabold uppercase tracking-tight leading-snug text-black mb-6 flex-grow group-hover:text-gold transition-colors">
+                    {article.title}
+                  </h3>
+
+                  <span className="btn-bracket btn-bracket-dark self-start group-hover:!text-gold">
+                    EXTERNAL LINK ↗
+                  </span>
+                </motion.a>
+              );
+            })}
+          </div>
+
+          <div className="mt-10">
+            <Link href="/press" className="btn-bracket btn-bracket-dark">
+              ‹ RETURN TO PRESS
             </Link>
-          </motion.div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
