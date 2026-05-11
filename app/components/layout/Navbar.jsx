@@ -19,6 +19,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Capabilities", path: "/products", group: "capabilities" },
+    { name: "Home", path: "/", group: "intel" },
     { name: "About", path: "/about", group: "intel" },
     { name: "Fleet", path: "/products", group: "intel" },
     { name: "Portfolio", path: "/portfolio", group: "intel" },
@@ -121,6 +122,30 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 10 }}
+                transition={{ delay: 0.22, duration: 0.4 }}
+              >
+                <div className="eyebrow opacity-70 mb-4">// INTEL</div>
+                <ul className="space-y-1">
+                  {navLinks
+                    .filter((l) => l.group === "intel")
+                    .map((link) => (
+                      <li key={link.path}>
+                        <Link
+                          href={link.path}
+                          onClick={() => setIsMenuOpen(false)}
+                          className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight uppercase hover:opacity-70 transition-opacity"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
                 transition={{ delay: 0.15, duration: 0.4 }}
               >
                 <div className="eyebrow opacity-70 mb-4">// CAPABILITIES</div>
@@ -142,30 +167,6 @@ const Navbar = () => {
                       </Link>
                     </li>
                   ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ delay: 0.22, duration: 0.4 }}
-              >
-                <div className="eyebrow opacity-70 mb-4">// INTEL</div>
-                <ul className="space-y-1">
-                  {navLinks
-                    .filter((l) => l.group === "intel")
-                    .map((link) => (
-                      <li key={link.path}>
-                        <Link
-                          href={link.path}
-                          onClick={() => setIsMenuOpen(false)}
-                          className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight uppercase hover:opacity-70 transition-opacity"
-                        >
-                          {link.name}
-                        </Link>
-                      </li>
-                    ))}
                 </ul>
               </motion.div>
             </div>
