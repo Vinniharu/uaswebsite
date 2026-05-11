@@ -27,7 +27,7 @@ const OurStory = () => {
           initial={{ opacity: 0, y: 80 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-          className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
+          className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[10vw] sm:text-[11vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
         >
           ABOUT&nbsp;BRIECH
         </motion.h1>
@@ -44,7 +44,7 @@ const OurStory = () => {
             transition={{ duration: 0.7, delay: 0.5 }}
           >
             <div className="eyebrow text-gold mb-3">// IDENTITY_PROFILE</div>
-            <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+            <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
               A proudly Nigerian UAS manufacturer{" "}
               <span className="text-gold">forging</span> Africa&apos;s
               autonomous aerial future.

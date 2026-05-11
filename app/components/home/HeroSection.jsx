@@ -69,7 +69,7 @@ const HeroSection = () => {
             <div className="eyebrow text-gold mb-3">
               // NEXT_GENERATION_SYSTEMS
             </div>
-            <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+            <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
               Forging Africa&apos;s next generation of{" "}
               <span className="text-gold">autonomous aerial</span> dominance.
             </p>

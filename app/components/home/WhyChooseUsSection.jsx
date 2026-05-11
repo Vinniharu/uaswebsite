@@ -36,7 +36,7 @@ const WhyChooseUsSection = () => {
       <div className="px-4 md:px-8">
         <div className="mb-12">
           <div className="eyebrow text-black/60 mb-3">// OPERATOR_ADVANTAGE</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Why Briech
           </h2>
         </div>
@@ -87,7 +87,7 @@ const WhyChooseUsSection = () => {
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className={`p-8 group hover:bg-gold/10 transition-colors duration-300 ${
+                  className={`p-6 sm:p-8 group hover:bg-gold/10 transition-colors duration-300 ${
                     index % 2 === 0 ? "md:border-r" : ""
                   } ${index < 2 ? "border-b" : ""} border-black/15`}
                 >

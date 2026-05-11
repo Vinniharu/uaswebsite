@@ -29,7 +29,7 @@ const OurApproach = () => {
         {/* SECTION HEADER */}
         <div className="mb-12">
           <div className="eyebrow text-black/60 mb-3">// OPERATIONAL_DOCTRINE</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Our Approach
           </h2>
         </div>
@@ -94,7 +94,7 @@ const OurApproach = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`p-8 hover:bg-gold/10 transition-colors duration-300 ${
+              className={`p-6 sm:p-8 hover:bg-gold/10 transition-colors duration-300 ${
                 index % 2 === 0 ? "md:border-r" : ""
               } ${index < features.length - 2 ? "md:border-b" : ""} border-black/15 ${
                 index < features.length - 1 ? "border-b md:border-b" : ""

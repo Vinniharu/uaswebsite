@@ -40,7 +40,7 @@ export default function PressArchive() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
+            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[10vw] sm:text-[11vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
           >
             PRESS&nbsp;ARCHIVE
           </motion.h1>
@@ -50,7 +50,7 @@ export default function PressArchive() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
             <div className="md:col-span-2 max-w-2xl">
               <div className="eyebrow text-gold mb-3">// FULL_BRIEFING_LOG</div>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
                 Every official briefing transmitted from{" "}
                 <span className="text-gold">Briech command</span>.
               </p>
@@ -79,7 +79,7 @@ export default function PressArchive() {
         <div className="px-4 md:px-8">
           <div className="mb-10">
             <div className="eyebrow text-black/60 mb-3">// COMPLETE_DOSSIER</div>
-            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
               All Briefings
             </h2>
           </div>

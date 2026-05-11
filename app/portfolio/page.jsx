@@ -101,7 +101,7 @@ export default function Portfolio() {
             initial={{ opacity: 0, y: 80 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
-            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[13.5vw] sm:text-[14vw] md:text-[12vw] lg:text-[10.5vw] text-center mix-blend-screen whitespace-nowrap"
+            className="font-extrabold tracking-tighter leading-[0.9] uppercase text-white text-[10vw] md:text-[10vw] text-center mix-blend-screen whitespace-nowrap"
           >
             FIELD&nbsp;PORTFOLIO
           </motion.h1>
@@ -116,7 +116,7 @@ export default function Portfolio() {
               transition={{ duration: 0.7, delay: 0.5 }}
             >
               <div className="eyebrow text-gold mb-3">// MISSION_DOSSIER</div>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
                 Strategic UAS deployments delivering{" "}
                 <span className="text-gold">real-time aerial intelligence</span>{" "}
                 across national security and infrastructure.
@@ -159,7 +159,7 @@ export default function Portfolio() {
         <div className="px-4 md:px-8">
           <div className="mb-12">
             <div className="eyebrow text-black/60 mb-3">// CASE_FILES</div>
-            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
               Featured Projects
             </h2>
             <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">
@@ -299,7 +299,7 @@ export default function Portfolio() {
         <div className="px-4 md:px-8">
           <div className="mb-10">
             <div className="eyebrow text-black/60 mb-3">// FORWARD_HORIZON</div>
-            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
               Beyond the Horizon
             </h2>
           </div>

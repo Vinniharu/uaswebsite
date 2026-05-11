@@ -39,7 +39,7 @@ export default function MediaPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
             <div className="md:col-span-2 max-w-2xl">
               <div className="eyebrow text-gold mb-3">// EXTERNAL_FEED</div>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
                 Briech UAS in{" "}
                 <span className="text-gold">leading publications</span> across
                 Nigeria and Africa.
@@ -69,7 +69,7 @@ export default function MediaPage() {
         <div className="px-4 md:px-8">
           <div className="mb-10">
             <div className="eyebrow text-black/60 mb-3">// FEATURED_PRESS</div>
-            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
               Coverage Index
             </h2>
           </div>

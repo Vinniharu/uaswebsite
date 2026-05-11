@@ -73,7 +73,7 @@ const ProductsSection = () => {
       <div className="py-20 md:py-28 px-4 md:px-8">
         <div className="mb-10">
           <div className="eyebrow text-black/60 mb-3">// AUTONOMOUS_INTERCEPTION</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Capabilities
           </h2>
           <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">
@@ -157,8 +157,8 @@ const ProductsSection = () => {
                   className="p-6 md:p-12"
                 />
               </motion.div>
-              {/* HUD readout */}
-              <div className="absolute top-4 right-4 hud-list text-black/70 text-right">
+              {/* HUD readout — hidden on phones to keep the drone image clean */}
+              <div className="hidden md:block absolute top-4 right-4 hud-list text-black/70 text-right">
                 <div>
                   ZONE_SCAN_INITIATED →{" "}
                   <span className="text-gold">SECTOR_07</span>
@@ -173,7 +173,7 @@ const ProductsSection = () => {
                   DRONE_03 = <span className="text-gold">HOLDING_PATTERN</span>
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 hud-list text-black/70">
+              <div className="hidden md:block absolute bottom-4 left-4 hud-list text-black/70">
                 <div>
                   SCAN_PROTOCOL = <span className="text-gold">ENGAGED</span>
                 </div>
@@ -193,7 +193,7 @@ const ProductsSection = () => {
       <div className="py-20 md:py-28 px-4 md:px-8 border-t border-black/10">
         <div className="mb-10">
           <div className="eyebrow text-black/60 mb-3">// OPERATIONAL_SUPERIORITY</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Our fleets
           </h2>
         </div>

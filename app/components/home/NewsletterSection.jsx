@@ -39,7 +39,7 @@ const NewsletterSection = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="eyebrow text-black/60 mb-3">// TRANSMIT_MESSAGE</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Signal In
           </h2>
           <p className="mt-6 text-black/75 leading-relaxed text-lg max-w-xl">

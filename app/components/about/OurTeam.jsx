@@ -43,7 +43,7 @@ const OurTeam = () => {
       <div className="px-4 md:px-8">
         <div className="mb-12">
           <div className="eyebrow text-black/60 mb-3">// PERSONNEL_DIVISIONS</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Our Team
           </h2>
           <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">

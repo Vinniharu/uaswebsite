@@ -102,7 +102,7 @@ export default async function DroneSpecifications({ params }) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
             <div className="md:col-span-2 max-w-2xl">
               <div className="eyebrow text-gold mb-3">// SYSTEM_PROFILE</div>
-              <p className="text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
+              <p className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.05] uppercase">
                 {name.replace(shortName, "").trim() || "Combat UAS"} —{" "}
                 <span className="text-gold">{tagline}</span>.
               </p>
@@ -138,7 +138,7 @@ export default async function DroneSpecifications({ params }) {
         <div className="px-4 md:px-8">
           <div className="mb-12">
             <div className="eyebrow text-black/60 mb-3">// LIVE_FEED = ACTIVE</div>
-            <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+            <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
               Interactive Model
             </h2>
           </div>
@@ -211,7 +211,7 @@ export default async function DroneSpecifications({ params }) {
               <div className="eyebrow text-black/60 mb-3">
                 // TECHNICAL_SPECIFICATIONS
               </div>
-              <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+              <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
                 Specifications
               </h2>
               <p className="mt-6 text-black/75 max-w-2xl leading-relaxed">

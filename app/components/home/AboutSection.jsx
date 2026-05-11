@@ -11,7 +11,7 @@ const AboutSection = () => {
         {/* SECTION HEADER */}
         <div className="mb-12">
           <div className="eyebrow text-black/60 mb-3">// FORWARD_OPERATING_VIEW</div>
-          <h2 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
+          <h2 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight">
             Our Mission
           </h2>
         </div>

@@ -60,7 +60,7 @@ export default function PressReleasePage() {
       <main className="min-h-screen bg-white text-black pt-20">
         <section className="py-20 md:py-28 px-4 md:px-8">
           <div className="eyebrow text-black/60 mb-3">// 404 · BRIEFING_NOT_FOUND</div>
-          <h1 className="bracket-heading text-5xl md:text-7xl font-extrabold uppercase tracking-tight mb-6">
+          <h1 className="bracket-heading text-4xl sm:text-5xl md:text-7xl font-extrabold uppercase tracking-tight mb-6">
             No Briefing
           </h1>
           <p className="text-black/75 max-w-xl mb-8 leading-relaxed">
